@@ -20,6 +20,7 @@
 					<li><a href="/222dof/progress/">progress</a></li>
 					<li><a href="/222dof/goals/">goals</a></li>
 					<li><a href="/222dof/projects/">projects</a></li>
+					<li><a href="/222dof/notes/">notes</a></li>
 				</ul>
 			</nav>
 			
@@ -30,7 +31,7 @@
 	
 	<article class="post">
 		<header>
-			<h2> <a href="/222dof/posts/12-18-2024/">First Post</a></h2>
+			<h2 class="post-title"> <a href="/222dof/posts/12-18-2024/">First Post</a></h2>
 			<small><em>12-18-2024</em></small>
 		</header>
 		<main>
@@ -58,7 +59,7 @@
 	
 	<article class="post">
 		<header>
-			<h2> <a href="/222dof/posts/12-19-2024/">An intro to JavaScript</a></h2>
+			<h2 class="post-title"> <a href="/222dof/posts/12-19-2024/">An intro to JavaScript</a></h2>
 			<small><em>12-19-2024</em></small>
 		</header>
 		<main>
@@ -99,6 +100,15 @@
 	
 	
 	
+	<script>
+		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+		for (const link of mainNavigationLinks) {
+			if (window.location.pathname.indexOf(link.innerText) != -1) {
+				link.classList.add("selected-link")
+			} else {
+				link.classList.add("unselected-main-navigation-link")
+			}
+		}
+	</script>
 	</body>
 </html>
-

@@ -20,6 +20,7 @@
 					<li><a href="/222dof/progress/">progress</a></li>
 					<li><a href="/222dof/goals/">goals</a></li>
 					<li><a href="/222dof/projects/">projects</a></li>
+					<li><a href="/222dof/notes/">notes</a></li>
 				</ul>
 			</nav>
 			
@@ -49,6 +50,15 @@
 	
 	
 	
+	<script>
+		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+		for (const link of mainNavigationLinks) {
+			if (window.location.pathname.indexOf(link.innerText) != -1) {
+				link.classList.add("selected-link")
+			} else {
+				link.classList.add("unselected-main-navigation-link")
+			}
+		}
+	</script>
 	</body>
 </html>
-

@@ -5,7 +5,44 @@
 		<title> Progress | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
-		
+<style>
+    #heatmap {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .month {
+        width: 45%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+    .month h3 {
+        font-family: "RobotoRegular", sans-serif !important;
+    }
+
+    .days-container {
+        width: fit-content;
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+    }
+    .day {
+        height: 2em;
+        width: 2em;
+        background: rgb(62, 62, 62);
+        border: 1px solid rgb(132, 132, 132);
+        margin: .1em;
+    }
+    .week {
+        width: fit-content;
+        display: block;
+    }
+
+</style>
+
 	</head>
 	<body>
 		<div id="container">
@@ -19,12 +56,18 @@
 					<li><a href="/222dof/progress/">progress</a></li>
 					<li><a href="/222dof/goals/">goals</a></li>
 					<li><a href="/222dof/projects/">projects</a></li>
+					<li><a href="/222dof/notes/">notes</a></li>
 				</ul>
 			</nav>
 			
 			<div id="content">
 			
-			
+
+<div id="heatmap">
+
+</div>
+
+
 			</div>
 	
 
@@ -40,7 +83,103 @@
 		</div>
 	
 	
-	
+<script>
+    /*
+    make each day that has passed clickable -> direct to blog post
+    */
+    const start = new Date(2024, 11, 22);
+    // 222 days between start and end
+    // const end = new Date(2025, 7, 1);
+
+    let day = start.getDate();
+    let currentDate = start;
+
+    let index = 0;
+
+    const heatmap = document.querySelector("#heatmap");
+
+    let currentMonth = null;
+    let currentWeek = null;
+    function createMonth() {
+        /*
+        access currentDate to get month string 
+        */
+        const month = document.createElement("div");
+        month.classList.add("month")
+
+        const monthLabel = document.createElement("h3");
+        // monthLabel.classList.add("month-label")
+        // get month in string form instead of integer form
+        monthLabel.innerText = currentDate.toLocaleString("en-US", {month: "long"});
+        month.appendChild(monthLabel)
+
+        const daysContainer = document.createElement("table");
+        daysContainer.classList.add("days-container")
+        month.appendChild(daysContainer)
+
+        heatmap.appendChild(month)
+
+        // save month reference to append days to later
+        currentMonth = daysContainer;
+        const week = document.createElement("tr");
+        week.classList.add("week")
+        currentWeek = week;
+    }
+
+    // create month for december (current date)
+    createMonth()
+
+    function newWeek() {
+        currentMonth.appendChild(currentWeek)
+        currentWeek = document.createElement("tr");
+        currentWeek.classList.add("week")
+    }
+
+    while (true) {
+        // want to append day to dayContainer at least one time therefore day == 2 instead of 1
+        if (currentDate.getMonth() == 7 && day == 2) {
+            currentMonth.appendChild(currentWeek)
+            break;
+        }
+
+
+        const dayContainer = document.createElement("td");
+        dayContainer.classList.add("day")
+        currentWeek.appendChild(dayContainer)
+
+        if (day % 7 == 0) {
+            newWeek()
+        }
+
+        day += 1;
+        let temp = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+        if (temp.getMonth() != currentDate.getMonth()) {
+            newWeek()
+
+            // new month
+            day = temp.getDate();
+            currentDate = new Date(temp.getFullYear(), temp.getMonth(), day);
+            createMonth()
+        }
+        // console.log("new month", `day: ${day} --- new day: ${temp.getDate()} --- new month: ${temp.getMonth()} --- old month${month.getMonth()}`)
+
+
+        if (index > 2000) {
+            break;
+        }
+        index += 1;
+    }
+</script>
+
+	<script>
+		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+		for (const link of mainNavigationLinks) {
+			if (window.location.pathname.indexOf(link.innerText) != -1) {
+				link.classList.add("selected-link")
+			} else {
+				link.classList.add("unselected-main-navigation-link")
+			}
+		}
+	</script>
 	</body>
 </html>
-
