@@ -32,9 +32,15 @@
     .day {
         height: 2em;
         width: 2em;
-        background: rgb(62, 62, 62);
+        background: var(--dark-gray);
         border: 1px solid rgb(132, 132, 132);
         margin: .1em;
+    }
+    .empty-day {
+        background: none;
+        border: none;
+        user-select: none;
+        pointer-events: none;
     }
     .week {
         width: fit-content;
@@ -73,12 +79,12 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<p>Hello World, in this blog I aim to post everyday for the entire 222 days. It's a challenge I thought of out of the blue and decided why not? It won't hurt me if anything it will help me be more accountable and maybe even help others along the way too! </p>
+					<p>Hello World, in this blog I am to post, document, educate, and inspire others. I know how to make basic sites but I don't know the ins-and-outs of html, css, and js which I plan to change during these 222 days of daily posting my daily studies.</p>
 					<br>
 					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
 				
-				<img src="/222dof/vectors/github.svg" alt="github icon">
+				<a href="https://github.com/constanthing" target="_blank"><img src="/222dof/vectors/github.svg" alt="github icon"></a>
 			</footer>
 		</div>
 	
@@ -137,18 +143,26 @@
 
     while (true) {
         // want to append day to dayContainer at least one time therefore day == 2 instead of 1
-        if (currentDate.getMonth() == 7 && day == 2) {
-            currentMonth.appendChild(currentWeek)
-            break;
-        }
+        // if (currentDate.getMonth() == 7 && day == 2) {
+        //     currentMonth.appendChild(currentWeek)
+        //     break;
+        // }
 
 
         const dayContainer = document.createElement("td");
+        // if (currentDate.getMonth() == 7) {
+        //     if (day > 1) {
+        //         dayContainer.classList.add("empty-day")
+        //     }
+        // }
         dayContainer.classList.add("day")
         currentWeek.appendChild(dayContainer)
 
         if (day % 7 == 0) {
             newWeek()
+            if (currentDate.getMonth() == 7) {
+                break;
+            }
         }
 
         day += 1;
@@ -169,6 +183,16 @@
         }
         index += 1;
     }
+
+    let childIndex = 0;
+    for (const child of currentMonth.querySelector(".week").children) {
+        if (childIndex >= 1) {
+            child.classList.add("empty-day")
+        }
+        childIndex+=1;
+    }
+    delete childIndex;
+
 </script>
 
 	<script>

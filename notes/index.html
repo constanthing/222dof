@@ -5,7 +5,83 @@
 		<title> Notes | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
-		
+<style>
+    ul {
+        margin: 0;
+    }
+
+    li {
+        margin: 0 !important;
+        list-style-type: none;
+        display: block;
+        margin-bottom: .5em !important;
+    }
+
+    a {
+        color: var(--medium-gray);
+    }
+
+    #content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    #content>* {
+        padding: 2em;
+    }
+
+    #notes-navigation {
+        width: 30%;
+        /* height: 100%; */
+        background: black;
+        border-right: .1em solid var(--dark-gray);
+    }
+
+    #notes-navigation-links a {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #notes-navigation-links a:hover img {
+        transform: rotate(90deg);
+    }
+
+    #notes-navigation-links label {
+        display: block;
+        margin-bottom: 1em;
+    }
+
+    .notes-selected a {
+        color: var(--white);
+    }
+    .notes-selected img {
+        transform: rotate(90deg);
+    }
+
+    .sublinks {
+        margin: .5em 0 1em 1em;
+        display: none;
+    }
+    .sublinks-selected {
+        display: block;
+    }
+    .sublinks a {
+        color: var(--medium-gray);
+    }
+
+    .active-notes-selected {
+        text-decoration: underline; 
+    }
+
+
+    #notes-output {
+        width: 70%;
+        /* height: 100%; */
+    }
+</style>
+
 	</head>
 	<body>
 		<div id="container">
@@ -25,46 +101,49 @@
 			
 			<div id="content">
 			
-<h2>Useful links</h2>
-<ul>
-    <ul>
-        <label for="">Design</label>
-        <li><a href="https://tailwindcss.com/resources" target="_blank">Tailwind Design Book</a></li>
-    </ul>
-    <ul>
-        <label for="">Static Site Generators</label>
-        <ul>
-            <label for="">articles</label>
+<!-- <h2>Useful links</h2> -->
+<div id="notes-navigation">
+    <ul id="notes-navigation-links">
+        <label for="" style="font-size: 1.2em;">Links</label>
+        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" for="design">
+            <a href="#">Design <img src="/222dof/vectors/right-arrow.svg"></a>
+        </li>
+        <ul id="design-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
+        </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="ssg"><a href="#">Static Site Generators <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <ul id="ssg-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
             <li><a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/" target="_blank">Why static site generators are the next big thing</a></li>
             <li><a href="https://www.zachleat.com/web/introducing-eleventy/" target="_blank">Creator of Eleventy post about the SSG</a></li>
             <li><a href="https://jamstack.org/glossary/" target="_blank">Jamstack Glossary</a></li>
             <li><a href="https://en.wikipedia.org/wiki/Static_site_generator" target="_blank">Wikipedia SSG</a></li>
-        </ul>
-        <ul>
-            <label for="">docs</label>
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="github"><a href="#">GitHub <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <ul id="github-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github Foundations Course</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/" target="_blank">Microsoft Github Actions Course</a></li>
+            <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
+        </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="webdev"><a href="#">Web Development <img src="/222dof/vectors/right-arrow.svg"></a>
+        </li>
+        <ul id="webdev-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">MDN Course</a></li>
+            <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin Project</a></li>
+        </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="js"><a href="#">JavaScript <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <ul id="js-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
+            <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
+        </ul>
     </ul>
-    <ul>
-        <label for="">GitHub</label>
-        <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github Foundations Course</a></li>
-        <li><a href="https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/" target="_blank">Microsoft Github Actions Course</a></li>
-        <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
-    </ul>
-    <ul>
-        <label for="">Web Development (General)</label>
-        <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">MDN Course</a></li>
-        <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin Project</a></li>
-    </ul>
-    <ul>
-        <label for="">JavaScript</label>
-        <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
-        <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
-    </ul>
-</ul>
+</div>
+<div id="notes-output">
+    <h2 id="notes-output-heading">Design</h2>
+</div>
 
 
 			</div>
@@ -72,17 +151,36 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<p>Hello World, in this blog I aim to post everyday for the entire 222 days. It's a challenge I thought of out of the blue and decided why not? It won't hurt me if anything it will help me be more accountable and maybe even help others along the way too! </p>
+					<p>Hello World, in this blog I am to post, document, educate, and inspire others. I know how to make basic sites but I don't know the ins-and-outs of html, css, and js which I plan to change during these 222 days of daily posting my daily studies.</p>
 					<br>
 					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
 				
-				<img src="/222dof/vectors/github.svg" alt="github icon">
+				<a href="https://github.com/constanthing" target="_blank"><img src="/222dof/vectors/github.svg" alt="github icon"></a>
 			</footer>
 		</div>
 	
 	
-	
+<script>
+    const notesOutputHeading = document.querySelector("#notes-output-heading"); 
+    let activeNotesSelected = document.querySelector(".active-notes-selected");
+
+    function parentLinkClicked(e) {
+        if (!e.classList.contains("notes-selected")) {
+            // hides it instead of updating output
+            notesOutputHeading.innerText = e.innerText;
+            e.classList.add("active-notes-selected")
+            activeNotesSelected.classList.remove("active-notes-selected")
+            activeNotesSelected = e;
+        }
+
+
+        e.classList.toggle("notes-selected")
+        const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+        sublinks.classList.toggle("sublinks-selected")
+    }
+</script>
+
 	<script>
 		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
 		for (const link of mainNavigationLinks) {

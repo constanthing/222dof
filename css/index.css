@@ -1,5 +1,5 @@
 .post {
-	color: var(--gray);
+	color: var(--light-gray);
 }
 #posts li {
 	list-style-type: none;
@@ -14,7 +14,7 @@
 }
 .post main {
 	padding: .7em 0 1em 0;
-	color: var(--gray);
+	color: var(--light-gray);
 }
 
 #content {
@@ -34,7 +34,7 @@
 .tag {
 	padding: .3em .5em;
 	font-size: .7em;
-	background: var(--gray);
+	background: var(--light-gray);
 	border: none;
 	border-radius: 5%;
 }

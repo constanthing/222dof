@@ -1,3 +1,7 @@
+#content a {
+    color: var(--medium-gray);
+}
+
 table {
     width: 100%;
     height: 100%;
@@ -16,22 +20,31 @@ tbody tr td:first-child {
 thead tr th:first-child, tbody tr th {
     text-align: left;
 }
+thead th {
+    padding-top: 0;
+}
 
 tbody tr:nth-of-type(odd) {
-    background: var(--dark-blue);
+    background: #313131;
+    /* background: rgb(62, 62, 62); */
 }
 
 
 .table-separator {
-    background: var(--noir-blue) !important;
+    /* background: var(--noir-blue) !important; */
+    background: black !important;
 }
 .table-separator th {
     font-size: initial;
+    border: 1px solid var(--dark-gray);
 }
 
 
 .incomplete {
-    color: var(--red);
+}
+
+tbody a {
+    font-style: italic;
 }
 
 tbody tr a::after {
