@@ -110,6 +110,9 @@
         </li>
         <ul id="design-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
+            <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building your color palette</a></li>
+            <li><a href="https://www.refactoringui.com/previews/labels-are-a-last-resort" target="_blank">Labels are a last resort</a></li>
+            <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
         <li class="notes-selected" onclick="parentLinkClicked(this)" for="ssg"><a href="#">Static Site Generators <img src="/222dof/vectors/right-arrow.svg"></a></li>
         <ul id="ssg-sublinks" class="sublinks sublinks-selected">
@@ -126,6 +129,7 @@
             <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github Foundations Course</a></li>
             <li><a href="https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/" target="_blank">Microsoft Github Actions Course</a></li>
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
+            <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
         <li class="notes-selected" onclick="parentLinkClicked(this)" for="webdev"><a href="#">Web Development <img src="/222dof/vectors/right-arrow.svg"></a>
         </li>
@@ -139,10 +143,22 @@
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="js"><a href="#">JavaScript <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <ul id="js-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
+            <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
+        </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="misc"><a href="#">Miscellaneous<img src="/222dof/vectors/right-arrow.svg"></a>
+        </li>
+        <ul id="webdev-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
+        </ul>
+
     </ul>
 </div>
 <div id="notes-output">
     <h2 id="notes-output-heading">Design</h2>
+    <p>Notes about design will go here.</p>
 </div>
 
 
@@ -151,7 +167,7 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<p>Hello World, in this blog I am to post, document, educate, and inspire others. I know how to make basic sites but I don't know the ins-and-outs of html, css, and js which I plan to change during these 222 days of daily posting my daily studies.</p>
+					<p>Hello World, in this blog I aim to document, educate, and inspire others. I know how to make basic sites but I don't know the ins-and-outs of html, css, and js which I plan to change during these 222 days of daily postings of my daily studies.</p>
 					<br>
 					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
@@ -162,6 +178,11 @@
 	
 	
 <script>
+    /*
+    on clicking sublink 
+    show the relative output
+    of parent link
+    */
     const notesOutputHeading = document.querySelector("#notes-output-heading"); 
     let activeNotesSelected = document.querySelector(".active-notes-selected");
 
