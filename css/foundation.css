@@ -104,7 +104,6 @@ pre[class*="language-"] {
 	font-size: .8em;
 }
 
-
 .clickable {
 	color: var(--medium-gray);
 	user-select: none;
@@ -253,17 +252,49 @@ blockquote {
 	}
 
 	#container {
-		width: 80%;
+		width: 100%;
+	}
+	#main-navigation {
+		padding: 0 2em;
+	}
+	#main-footer {
+		padding: 2em;
+	}
+	#content {
+		padding: 2em;
 	}
 }
 
-@media screen and (max-width: 650px) {
-	#container {
-		width: 90%;
-	}
-}
 
+#hamburger {
+	height: 2.5em;
+	filter: invert(.5);
+	display: none;
+}
+#hamburger.hamburger-selected {
+	filter: unset;
+}
+#main-navigation-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+#hamburger.hamburger-selected + #main-navigation-links {
+	display: flex;
+}
 @media screen and (max-width: 560px) {
+	#hamburger {
+		display: block;
+	}
+	#main-navigation {
+		height: unset;
+		padding: 2em !important;
+		align-items: start;
+	}
+	#main-navigation-links {
+		margin-top: 2em;
+		display: none;
+	}
 	.month {
 		width: 100%;
 	}
@@ -276,5 +307,14 @@ blockquote {
 	.post {
 		margin-right: 0 !important;
 		margin-left: 0 !important;
+	}
+}
+@media screen and (max-width: 420px) {
+	#main-navigation-links {
+		flex-direction: column;
+		text-align: right;
+	}
+	#main-navigation-links li {
+		padding-right: 0;
 	}
 }

@@ -119,9 +119,12 @@
     #notes-output-heading {
         margin-bottom: 1em;
     }
+    #notes-output h2, h3, h4, h5, h6 {
+        font-family: "RobotoRegular", sans-serif !important;
+    }
     .output-subheading {
         margin-bottom: .3em;
-        color: rgb(149 149 149);
+        color: var(--medium-gray);
     }
 
     .output {
@@ -138,9 +141,6 @@
     @media screen and (max-width: 1100px) {
         #content {
             flex-direction: column;
-        }
-        #container {
-            width: 100%;
         }
         #main-navigation {
             padding: 0 2em;
@@ -174,12 +174,15 @@
 					<small>posts everyday (until August 1st)</small>
 				</div>
 				
-				<ul id="main-navigation-links">
-					<li><a href="/222dof/progress/">progress</a></li>
-					<li><a href="/222dof/goals/">goals</a></li>
-					<li><a href="/222dof/notes/">notes</a></li>
-					<li><a href="/222dof/projects/">projects</a></li>
-				</ul>
+				<div id="main-navigation-menu">
+					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
+					<ul id="main-navigation-links">
+						<li><a href="/222dof/progress/">progress</a></li>
+						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/notes/">notes</a></li>
+						<li><a href="/222dof/projects/">projects</a></li>
+					</ul>
+				</div>
 			</nav>
 			
 			<div id="content">
@@ -191,8 +194,8 @@
         <div id="notes-navigation-links-header">
             <label for="" style="font-size: 1.2em;">Links</label>
             <div class="flex align-items-center">
-                <img src="/222dof/vectors/reveal.svg" alt="Eye icon">
-                <small onclick="expandMode(this)" data-mode="0" class="clickable" style="padding-left: .5em">All</small>
+                <img src="/222dof/vectors/hide.svg" alt="Eye icon">
+                <small onclick="expandMode(this)" data-mode="1" class="clickable" style="padding-left: .5em">All</small>
             </div>
         </div>
 
@@ -265,7 +268,7 @@
     </ul>
 </div>
 <div id="notes-output">
-    <h2 id="notes-output-heading">JavaScript</h2>
+    <h1 id="notes-output-heading">JavaScript</h1>
 
     <div id="design-output" class="output">
         <p>EMPTY</p>
@@ -496,6 +499,21 @@
 		// header fonts look ugly on safari / ios devices
 		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
 			document.querySelector("html").classList.add("safari");
+		}
+
+		function hamburgerClick(e) {
+			const mode = e.dataset.mode;
+			// 0 = hide
+			// 1 = reveal
+			if (mode == "0") {
+				// reveal
+				e.classList.add("hamburger-selected")
+				e.dataset.mode = "1";
+			} else {
+				// hide
+				e.classList.remove("hamburger-selected")
+				e.dataset.mode = "0";
+			}
 		}
 	</script>
 	</body>

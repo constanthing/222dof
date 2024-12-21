@@ -59,12 +59,15 @@
 					<small>posts everyday (until August 1st)</small>
 				</div>
 				
-				<ul id="main-navigation-links">
-					<li><a href="/222dof/progress/">progress</a></li>
-					<li><a href="/222dof/goals/">goals</a></li>
-					<li><a href="/222dof/notes/">notes</a></li>
-					<li><a href="/222dof/projects/">projects</a></li>
-				</ul>
+				<div id="main-navigation-menu">
+					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
+					<ul id="main-navigation-links">
+						<li><a href="/222dof/progress/">progress</a></li>
+						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/notes/">notes</a></li>
+						<li><a href="/222dof/projects/">projects</a></li>
+					</ul>
+				</div>
 			</nav>
 			
 			<div id="content">
@@ -210,6 +213,21 @@
 		// header fonts look ugly on safari / ios devices
 		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
 			document.querySelector("html").classList.add("safari");
+		}
+
+		function hamburgerClick(e) {
+			const mode = e.dataset.mode;
+			// 0 = hide
+			// 1 = reveal
+			if (mode == "0") {
+				// reveal
+				e.classList.add("hamburger-selected")
+				e.dataset.mode = "1";
+			} else {
+				// hide
+				e.classList.remove("hamburger-selected")
+				e.dataset.mode = "0";
+			}
 		}
 	</script>
 	</body>
