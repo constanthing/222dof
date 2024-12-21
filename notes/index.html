@@ -97,6 +97,12 @@
         width: 70%;
         /* height: 100%; */
     }
+    .output {
+        display: none;
+    }
+    .output-selected {
+        display: block;
+    }
 </style>
 
 	</head>
@@ -122,7 +128,7 @@
 <div id="notes-navigation">
     <ul id="notes-navigation-links">
         <label for="" style="font-size: 1.2em;">Links</label>
-        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" for="design" data-initial-click="1">
+        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
             Design <img src="/222dof/vectors/right-arrow.svg">
         </li>
         <ul id="design-sublinks" class="sublinks sublinks-selected">
@@ -133,9 +139,9 @@
                     last resort</a></li>
             <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="ssg" data-initial-click="1">Static
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="static-site-generators" data-initial-click="1">Static
             Site Generators <img src="/222dof/vectors/right-arrow.svg"></li>
-        <ul id="ssg-sublinks" class="sublinks sublinks-selected">
+        <ul id="static-site-generators-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
             <li><a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/" target="_blank">Why static site generators are the next big thing</a></li>
             <li><a href="https://www.zachleat.com/web/introducing-eleventy/" target="_blank">Creator of Eleventy post
@@ -145,7 +151,7 @@
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="github" data-initial-click="1">GitHub <img src="/222dof/vectors/right-arrow.svg"></li>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub <img src="/222dof/vectors/right-arrow.svg"></li>
         <ul id="github-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github
                     Foundations Course</a></li>
@@ -153,23 +159,23 @@
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
             <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="webdev" data-initial-click="1">Web
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">Web
             Development <img src="/222dof/vectors/right-arrow.svg">
         </li>
-        <ul id="webdev-sublinks" class="sublinks sublinks-selected">
+        <ul id="web-development-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">MDN Course</a></li>
             <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin
                     Project</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" for="js">JavaScript <img src="/222dof/vectors/right-arrow.svg"></li>
-        <ul id="js-sublinks" class="sublinks sublinks-selected">
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">JavaScript <img src="/222dof/vectors/right-arrow.svg"></li>
+        <ul id="javascript-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="misc" data-initial-click="1">Miscellaneous<img src="/222dof/vectors/right-arrow.svg">
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">Miscellaneous<img src="/222dof/vectors/right-arrow.svg">
         </li>
-        <ul id="misc-sublinks" class="sublinks sublinks-selected">
+        <ul id="miscellaneous-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
         </ul>
 
@@ -177,7 +183,29 @@
 </div>
 <div id="notes-output">
     <h2 id="notes-output-heading">Design</h2>
-    <p>Notes about design will go here.</p>
+
+    <div id="design-output" class="output output-selected">
+        <p>EMPTY</p>
+    </div>
+    <div id="static-site-generators-output" class="output">
+        <p>EMPTY</p>
+    </div>
+    <div id="github-output" class="output">
+        <p>EMPTY</p>
+    </div>
+    <div id="web-development-output" class="output">
+        <p>EMPTY</p>
+    </div>
+    <div id="miscellaneous-output" class="output">
+        <p>EMPTY</p>
+    </div>
+    <div id="javascript-output" class="output">
+        <p>Using insertBefore(undefined, ...)<br>
+            The method insertBefore() expects two arguments: the node to insert and the reference node. If you pass undefined as the reference node, it essentially appends the new node to the end of the parent. 
+            <br>MDN Spec on insertBefore: <br>
+            If the referenceNode is null or not found, the new node is inserted at the end of the parent.</p>
+        <p>[INSERT CODE SNIPPET OF EXAMPLE]</p>
+    </div>
 </div>
 
 
@@ -186,9 +214,8 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<p>This blog exists for two reasons: motivation and guidance. I found that I was lacking motivation to code even though I love it so I decided to challenge myself. 
-					222 days of studying web development and posting about it everyday. Not only will I grasp concepts better by writing posts as if I were teaching it but also this
-					blog can serve as guidance for aspiring web developers. As the last post will be about me getting an internship basd on these 222 days of studying.</p> 
+					<p>222 days of blog posts on my journey to becoming a web developer. I hope this can serve as a resource
+					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
 					<br>
 					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
@@ -206,17 +233,17 @@
     */
     const notesOutputHeading = document.querySelector("#notes-output-heading");
     let activeNotesSelected = document.querySelector(".active-notes-selected");
+    let activeOutputSelected = document.querySelector(".output-selected");
 
     function parentLinkClicked(e) {
         // if not the selected note 
-        console.log(e.classList)
 
         if (e.classList.contains("active-notes-selected")) {
             // if current note is the active one
 
             // hide contents
             e.classList.remove("notes-selected")
-            const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
             sublinks.classList.remove("sublinks-selected")
 
             // strip it from active note selected status! 
@@ -235,9 +262,16 @@
             e.classList.add("active-notes-selected")
             activeNotesSelected = e;
 
+            // make output visible // hide active one 
+            const output = document.querySelector(`#${e.dataset.type}-output`);
+            console.log(output)
+            output.classList.add("output-selected")
+            activeOutputSelected.classList.remove("output-selected")
+            activeOutputSelected = output;
+
             // reveal contents
             e.classList.add("notes-selected")
-            const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
             sublinks.classList.add("sublinks-selected")
 
             // not current selected to show the content of the note 
