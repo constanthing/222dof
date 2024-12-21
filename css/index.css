@@ -33,6 +33,7 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	gap: 1em;
 }
 
 /* END OF month */
@@ -45,7 +46,6 @@
 .post {
 	/* 100 / 3 = 33.33 -> additional space for padding/margin -> 30% */
 	flex-grow: 1;
-	margin: .5em .3em;
 	width: 32%;
 	padding: 2em 1em;
 	box-shadow: inset 0px 5px 1.5em #020202;
@@ -77,6 +77,10 @@
 	background: var(--light-gray);
 	border: none;
 	border-radius: 5%;
+	color: var(--dark-gray);
+	background: var(--light-gray);
+	border: .1em solid var(--dark-gray);
+	border-radius: .2em;
 }
 
 .unselected-main-navigation-link {

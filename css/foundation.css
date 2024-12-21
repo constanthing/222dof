@@ -234,6 +234,12 @@ blockquote {
 	color: var(--light-gray);
 }
 
+@media screen and (max-width: 1700px) {
+	#container {
+		width: 55%;
+	}
+}
+
 @media screen and (max-width: 1450px) {
 	#container {
 		width: 55%;
@@ -282,7 +288,18 @@ blockquote {
 #hamburger.hamburger-selected + #main-navigation-links {
 	display: flex;
 }
+@media screen and (max-width: 650px) {
+	#main-footer {
+		flex-direction: column;
+		align-items: start;
+	}
+	#main-footer-about {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+}
 @media screen and (max-width: 560px) {
+
 	#hamburger {
 		display: block;
 	}

@@ -123,7 +123,7 @@
         font-family: "RobotoRegular", sans-serif !important;
     }
     .output-subheading {
-        margin-bottom: .3em;
+        margin: 2em 0 .3em 0;
         color: var(--medium-gray);
     }
 
@@ -142,9 +142,7 @@
         #content {
             flex-direction: column;
         }
-        #main-navigation {
-            padding: 0 2em;
-        }
+
 
         #notes-navigation {
             width: 100%;
@@ -158,9 +156,7 @@
         blockquote {
             margin: .5em 0 1em 0;
         }
-        #main-footer {
-            padding: 2em;
-        }
+
     }
 </style>
 <link rel="stylesheet" href="/222dof/css/prism-atom-dark.css">
@@ -263,6 +259,7 @@
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
             <li><a href="https://prismjs.com/index.html" target="_blank">PrismJS</a></li>
             <li><a href="https://markdowntohtml.com/" target="_blank">HTML to Markdown</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout" target="_blank">Grid Layout</a></li>
         </ul>
 
     </ul>
@@ -283,6 +280,17 @@
         <h3 class="output-subheading">Font size appearing abnormally small on smaller screens?</h3>
         <p>Check that you have inserted the "viewport" metadata option in a <code>meta</code> tag!</p>
         <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+        <h3 class="output-subheading">gap grid/flexbox property</h3>
+        <p>When trying to provide space around elements in flexbox and grid you might have done this:</p>
+        <pre class="language-css"><code class="language-css"><span class="token selector">.child-element</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> .5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre> 
+        <p>This can provide unncessary space to left and right of the elements in the first and last rows you may not want</p>
+        <p>Instead you can use the gap property to provide space in the inside only: </p>
+        <pre class="language-css"><code class="language-css"><span class="token selector">.parent-element</span> <span class="token punctuation">{</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> .5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
     </div>
     <div id="miscellaneous-output" class="output">
         <p>EMPTY</p>
@@ -321,10 +329,9 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
+					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 					<p>222 days of blog posts on my journey to becoming a web developer. I hope this can serve as a resource
 					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
-					<br>
-					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
 				
 				<a href="https://github.com/constanthing" target="_blank"><img src="/222dof/vectors/github.svg" alt="github icon"></a>
