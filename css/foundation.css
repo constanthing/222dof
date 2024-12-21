@@ -9,9 +9,13 @@
 }
 
 :root {
-	--white: #d6d6d6;
+	/* --white: #d6d6d6; */
+	--white: #cacaca;
+
 	/* --light-gray: #c4c3c2; */
-	--light-gray: #adadad;
+	/* --light-gray: #adadad; */
+	--light-gray: #b1b1b1;
+
 	--medium-gray: rgb(132, 132, 132);
 	--dark-gray: rgb(62, 62, 62);
 }

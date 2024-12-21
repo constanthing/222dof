@@ -43,19 +43,34 @@
         display: flex;
         justify-content: space-between;
     }
-
     #notes-navigation-links a:hover img {
         transform: rotate(90deg);
     }
-
     #notes-navigation-links label {
         display: block;
         margin-bottom: 1em;
     }
+    /* parent "links" */
+    #notes-navigation-links > li {
+        user-select: none;
+        -moz-user-select: none; /* mozilla */
+        -webkit-user-select: none; /* safari */
 
-    .notes-selected a {
-        color: var(--white);
+        color: var(--medium-gray);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
+    #notes-navigation-links > li:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+
+    .notes-selected {
+        color: var(--white) !important;
+    }
+
     .notes-selected img {
         transform: rotate(90deg);
     }
@@ -64,15 +79,17 @@
         margin: .5em 0 1em 1em;
         display: none;
     }
+
     .sublinks-selected {
         display: block;
     }
+
     .sublinks a {
         color: var(--medium-gray);
     }
 
     .active-notes-selected {
-        text-decoration: underline; 
+        text-decoration: underline;
     }
 
 
@@ -94,8 +111,8 @@
 				<ul id="main-navigation-links">
 					<li><a href="/222dof/progress/">progress</a></li>
 					<li><a href="/222dof/goals/">goals</a></li>
-					<li><a href="/222dof/projects/">projects</a></li>
 					<li><a href="/222dof/notes/">notes</a></li>
+					<li><a href="/222dof/projects/">projects</a></li>
 				</ul>
 			</nav>
 			
@@ -105,52 +122,54 @@
 <div id="notes-navigation">
     <ul id="notes-navigation-links">
         <label for="" style="font-size: 1.2em;">Links</label>
-        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" for="design">
-            <a href="#">Design <img src="/222dof/vectors/right-arrow.svg"></a>
+        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" for="design" data-initial-click="1">
+            Design <img src="/222dof/vectors/right-arrow.svg">
         </li>
         <ul id="design-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
-            <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building your color palette</a></li>
-            <li><a href="https://www.refactoringui.com/previews/labels-are-a-last-resort" target="_blank">Labels are a last resort</a></li>
+            <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building
+                    your color palette</a></li>
+            <li><a href="https://www.refactoringui.com/previews/labels-are-a-last-resort" target="_blank">Labels are a
+                    last resort</a></li>
             <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="ssg"><a href="#">Static Site Generators <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="ssg" data-initial-click="1">Static
+            Site Generators <img src="/222dof/vectors/right-arrow.svg"></li>
         <ul id="ssg-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
             <li><a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/" target="_blank">Why static site generators are the next big thing</a></li>
-            <li><a href="https://www.zachleat.com/web/introducing-eleventy/" target="_blank">Creator of Eleventy post about the SSG</a></li>
+            <li><a href="https://www.zachleat.com/web/introducing-eleventy/" target="_blank">Creator of Eleventy post
+                    about the SSG</a></li>
             <li><a href="https://jamstack.org/glossary/" target="_blank">Jamstack Glossary</a></li>
             <li><a href="https://en.wikipedia.org/wiki/Static_site_generator" target="_blank">Wikipedia SSG</a></li>
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="github"><a href="#">GitHub <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="github" data-initial-click="1">GitHub <img src="/222dof/vectors/right-arrow.svg"></li>
         <ul id="github-sublinks" class="sublinks sublinks-selected">
-            <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github Foundations Course</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github
+                    Foundations Course</a></li>
             <li><a href="https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/" target="_blank">Microsoft Github Actions Course</a></li>
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
             <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="webdev"><a href="#">Web Development <img src="/222dof/vectors/right-arrow.svg"></a>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="webdev" data-initial-click="1">Web
+            Development <img src="/222dof/vectors/right-arrow.svg">
         </li>
         <ul id="webdev-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">MDN Course</a></li>
-            <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin Project</a></li>
+            <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin
+                    Project</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="js"><a href="#">JavaScript <img src="/222dof/vectors/right-arrow.svg"></a></li>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" for="js">JavaScript <img src="/222dof/vectors/right-arrow.svg"></li>
         <ul id="js-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="js"><a href="#">JavaScript <img src="/222dof/vectors/right-arrow.svg"></a></li>
-        <ul id="js-sublinks" class="sublinks sublinks-selected">
-            <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
-            <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
-        </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" for="misc"><a href="#">Miscellaneous<img src="/222dof/vectors/right-arrow.svg"></a>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" for="misc" data-initial-click="1">Miscellaneous<img src="/222dof/vectors/right-arrow.svg">
         </li>
-        <ul id="webdev-sublinks" class="sublinks sublinks-selected">
+        <ul id="misc-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
         </ul>
 
@@ -167,7 +186,9 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<p>Hello World, in this blog I aim to document, educate, and inspire others. I know how to make basic sites but I don't know the ins-and-outs of html, css, and js which I plan to change during these 222 days of daily postings of my daily studies.</p>
+					<p>This blog exists for two reasons: motivation and guidance. I found that I was lacking motivation to code even though I love it so I decided to challenge myself. 
+					222 days of studying web development and posting about it everyday. Not only will I grasp concepts better by writing posts as if I were teaching it but also this
+					blog can serve as guidance for aspiring web developers. As the last post will be about me getting an internship basd on these 222 days of studying.</p> 
 					<br>
 					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 				</div>
@@ -183,22 +204,83 @@
     show the relative output
     of parent link
     */
-    const notesOutputHeading = document.querySelector("#notes-output-heading"); 
+    const notesOutputHeading = document.querySelector("#notes-output-heading");
     let activeNotesSelected = document.querySelector(".active-notes-selected");
 
     function parentLinkClicked(e) {
-        if (!e.classList.contains("notes-selected")) {
-            // hides it instead of updating output
-            notesOutputHeading.innerText = e.innerText;
+        // if not the selected note 
+        console.log(e.classList)
+
+        if (e.classList.contains("active-notes-selected")) {
+            // if current note is the active one
+
+            // hide contents
+            e.classList.remove("notes-selected")
+            const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            sublinks.classList.remove("sublinks-selected")
+
+            // strip it from active note selected status! 
             e.classList.add("active-notes-selected")
             activeNotesSelected.classList.remove("active-notes-selected")
+
+            // what happens when you remove active note status from the active note status??!  
+            activeNotesSelected = null;
+        } else {
+            if (activeNotesSelected) {
+                // remove active note selected status from old active note! 
+                activeNotesSelected.classList.remove("active-notes-selected")
+            }
+
+            // make active note
+            e.classList.add("active-notes-selected")
             activeNotesSelected = e;
+
+            // reveal contents
+            e.classList.add("notes-selected")
+            const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            sublinks.classList.add("sublinks-selected")
+
+            // not current selected to show the content of the note 
+            notesOutputHeading.innerText = e.innerText;
+            e.dataset.initialClick = "0"; // false
         }
 
 
-        e.classList.toggle("notes-selected")
-        const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
-        sublinks.classList.toggle("sublinks-selected")
+
+        // if (!e.classList.contains("active-notes-selected")) {
+        //     // not initial click
+        //     if (e.dataset.initialClick != "1") {
+
+        //         // "hide contents"
+        //         e.classList.toggle("notes-selected")
+        //         const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+        //         sublinks.classList.toggle("sublinks-selected")
+
+        //     } else {
+        //         // initial click
+        //         // hides it instead of updating output
+        //         notesOutputHeading.innerText = e.innerText;
+        //         e.dataset.initialClick = "0"; // false
+        //     }
+
+        //     if (e.classList.contains("notes-selected")) {
+        //         e.classList.add("active-notes-selected")
+        //         activeNotesSelected.classList.remove("active-notes-selected")
+        //         activeNotesSelected = e;
+        //     }
+        // } else {
+        //     // "hide contents"
+        //     e.classList.toggle("notes-selected")
+        //     const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+        //     sublinks.classList.toggle("sublinks-selected")
+
+        //     // remove active selected
+        //     e.classList.add("active-notes-selected")
+        //     activeNotesSelected.classList.remove("active-notes-selected")
+        //     activeNotesSelected = e;
+        // }
+
+
     }
 </script>
 
