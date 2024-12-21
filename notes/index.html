@@ -39,29 +39,47 @@
         border-right: .1em solid var(--dark-gray);
     }
 
+    #notes-navigation-links-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+
     #notes-navigation-links a {
         display: flex;
         justify-content: space-between;
     }
+
     #notes-navigation-links a:hover img {
         transform: rotate(90deg);
     }
+
     #notes-navigation-links label {
         display: block;
-        margin-bottom: 1em;
     }
+
     /* parent "links" */
-    #notes-navigation-links > li {
+    #notes-navigation-links>li {
         user-select: none;
-        -moz-user-select: none; /* mozilla */
-        -webkit-user-select: none; /* safari */
+        -moz-user-select: none;
+        /* mozilla */
+        -webkit-user-select: none;
+        /* safari */
 
         color: var(--medium-gray);
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    #notes-navigation-links > li:hover {
+    .arrow {
+        filter: invert(.5)
+    }
+    .notes-selected .arrow {
+        filter: unset;
+    }
+
+    #notes-navigation-links>li:hover {
         text-decoration: underline;
         cursor: pointer;
     }
@@ -97,13 +115,26 @@
         width: 70%;
         /* height: 100%; */
     }
+    #notes-output-heading {
+        margin-bottom: 1em;
+    }
+    .output-subheading {
+        margin-bottom: .3em;
+        color: rgb(149 149 149);
+    }
+
     .output {
         display: none;
     }
+    .output p {
+        margin: .5em 0;
+    }
+
     .output-selected {
         display: block;
     }
 </style>
+<link rel="stylesheet" href="/222dof/css/prism-atom-dark.css">
 
 	</head>
 	<body>
@@ -127,10 +158,19 @@
 <!-- <h2>Useful links</h2> -->
 <div id="notes-navigation">
     <ul id="notes-navigation-links">
-        <label for="" style="font-size: 1.2em;">Links</label>
-        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
-            Design <img src="/222dof/vectors/right-arrow.svg">
+
+        <div id="notes-navigation-links-header">
+            <label for="" style="font-size: 1.2em;">Links</label>
+            <div class="flex align-items-center">
+                <img src="/222dof/vectors/reveal.svg" alt="Eye icon">
+                <small onclick="expandMode(this)" data-mode="0" class="clickable" style="padding-left: .5em">All</small>
+            </div>
+        </div>
+
+        <li class="notes-selected " onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
+            Design <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
+
         <ul id="design-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
             <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building
@@ -140,7 +180,7 @@
             <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
         <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="static-site-generators" data-initial-click="1">Static
-            Site Generators <img src="/222dof/vectors/right-arrow.svg"></li>
+            Site Generators <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
         <ul id="static-site-generators-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
             <li><a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/" target="_blank">Why static site generators are the next big thing</a></li>
@@ -151,7 +191,9 @@
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub <img src="/222dof/vectors/right-arrow.svg"></li>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub
+            <img src="/222dof/vectors/right-arrow.svg" class="arrow">
+        </li>
         <ul id="github-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github
                     Foundations Course</a></li>
@@ -159,8 +201,9 @@
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
             <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">Web
-            Development <img src="/222dof/vectors/right-arrow.svg">
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">
+            Web
+            Development <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="web-development-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
@@ -168,23 +211,26 @@
             <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin
                     Project</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">JavaScript <img src="/222dof/vectors/right-arrow.svg"></li>
+        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">
+            JavaScript <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
         <ul id="javascript-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">Miscellaneous<img src="/222dof/vectors/right-arrow.svg">
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">
+            Miscellaneous<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="miscellaneous-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
+            <li><a href="https://prismjs.com/index.html" target="_blank">PrismJS</a></li>
         </ul>
 
     </ul>
 </div>
 <div id="notes-output">
-    <h2 id="notes-output-heading">Design</h2>
+    <h2 id="notes-output-heading">JavaScript</h2>
 
-    <div id="design-output" class="output output-selected">
+    <div id="design-output" class="output">
         <p>EMPTY</p>
     </div>
     <div id="static-site-generators-output" class="output">
@@ -199,16 +245,32 @@
     <div id="miscellaneous-output" class="output">
         <p>EMPTY</p>
     </div>
-    <div id="javascript-output" class="output">
-        <p>Using insertBefore(undefined, ...)<br>
-            The method insertBefore() expects two arguments: the node to insert and the reference node. If you pass undefined as the reference node, it essentially appends the new node to the end of the parent. 
-            <br>MDN Spec on insertBefore: <br>
-            If the referenceNode is null or not found, the new node is inserted at the end of the parent.</p>
-        <p>[INSERT CODE SNIPPET OF EXAMPLE]</p>
+    <div id="javascript-output" class="output-selected output">
+        <h3 class="output-subheading">Using insertBefore(undefined, ...)</h3>
+        <p>
+            The method insertBefore() expects <strong>two</strong> arguments: the node to insert and the reference node. If you pass
+            undefined as the reference node, it essentially appends the new node to the end of the parent.
+        </p>
+        <p>MDN Spec on insertBefore:</p>
+        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#example_2">
+            <p>If the referenceNode is null or not found, the new node is inserted at the end of the parent.</p>
+        </blockquote>
+
+            <pre class="language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>posts<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">const</span> first<span class="token operator">=</span>posts<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+    <span class="token keyword">const</span> second<span class="token operator">=</span>posts<span class="token punctuation">[</span>posts<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+    monthPosts<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>second<span class="token punctuation">,</span> first<span class="token punctuation">)</span> 
+    monthPosts<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>first<span class="token punctuation">,</span> posts<span class="token punctuation">[</span>posts<span class="token punctuation">.</span>length <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span> 
+    <span class="token comment">// In the first iteration </span>
+    <span class="token comment">// posts.length - i = posts.length </span>
+    <span class="token comment">// which is out of bounds so its really saying -> </span>
+    <span class="token comment">// monthPosts.insertBefore(first, undefined)</span>
+    <span class="token comment">// which inserts "first" at the end of the "monthPosts" element</span>
+<span class="token punctuation">}</span></code></pre> 
     </div>
 </div>
 
-
+    
 			</div>
 	
 
@@ -225,99 +287,160 @@
 		</div>
 	
 	
-<script>
-    /*
-    on clicking sublink 
-    show the relative output
-    of parent link
-    */
-    const notesOutputHeading = document.querySelector("#notes-output-heading");
-    let activeNotesSelected = document.querySelector(".active-notes-selected");
-    let activeOutputSelected = document.querySelector(".output-selected");
+    <script>
 
-    function parentLinkClicked(e) {
-        // if not the selected note 
 
-        if (e.classList.contains("active-notes-selected")) {
-            // if current note is the active one
+        /*
+        on clicking sublink 
+        show the relative output
+        of parent link
+        */
 
-            // hide contents
-            e.classList.remove("notes-selected")
-            const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
-            sublinks.classList.remove("sublinks-selected")
+        const notesOutputHeading = document.querySelector("#notes-output-heading");
+        let activeNotesSelected = document.querySelector(".active-notes-selected");
+        let activeOutputSelected = document.querySelector(".output-selected");
 
-            // strip it from active note selected status! 
-            e.classList.add("active-notes-selected")
-            activeNotesSelected.classList.remove("active-notes-selected")
+        function expandMode(e) {
+            const img = e.previousElementSibling;
+            const parentLinks = document.querySelectorAll("#notes-navigation-links > li");
 
-            // what happens when you remove active note status from the active note status??!  
-            activeNotesSelected = null;
-        } else {
-            if (activeNotesSelected) {
-                // remove active note selected status from old active note! 
-                activeNotesSelected.classList.remove("active-notes-selected")
+            /*
+            IGNORE ACTIVELY SELECTED ONE
+            */
+
+            // 0 = reveal    1 = hide
+            if (e.dataset.mode == "0") {
+                // hide
+                img.src = "/222dof/vectors/hide.svg";
+                e.dataset.mode = "1";
+
+                for (const link of parentLinks) {
+                    if (activeNotesSelected && link != activeNotesSelected) {
+                        // remove selected status
+                        link.classList.remove("notes-selected")
+                        // something with INVERT on img of non selected notes
+                        const sublinks = document.querySelector(`#${link.dataset.type}-sublinks`);
+                        sublinks.classList.remove("sublinks-selected")
+                    }
+                }
+            } else {
+                // reveal 
+                img.src = "/222dof/vectors/reveal.svg";
+                e.dataset.mode = "0";
+                for (const link of parentLinks) {
+                    if (activeNotesSelected && link != activeNotesSelected) {
+                        // remove selected status
+                        link.classList.add("notes-selected")
+                        // something with INVERT on img of non selected notes
+                        const sublinks = document.querySelector(`#${link.dataset.type}-sublinks`);
+                        sublinks.classList.add("sublinks-selected")
+                    }
+                }
             }
 
-            // make active note
-            e.classList.add("active-notes-selected")
-            activeNotesSelected = e;
-
-            // make output visible // hide active one 
-            const output = document.querySelector(`#${e.dataset.type}-output`);
-            console.log(output)
-            output.classList.add("output-selected")
-            activeOutputSelected.classList.remove("output-selected")
-            activeOutputSelected = output;
-
-            // reveal contents
-            e.classList.add("notes-selected")
-            const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
-            sublinks.classList.add("sublinks-selected")
-
-            // not current selected to show the content of the note 
-            notesOutputHeading.innerText = e.innerText;
-            e.dataset.initialClick = "0"; // false
+            if (activeNotesSelected) {
+                // activeNotesSelected.classList.remove("active-notes-selected")
+                // activeNotesSelected = null;
+                // activeOutputSelected.classList.remove("output-selected")
+                // activeOutputSelected = null;
+            } else {
+                notesOutputHeading.innerText = "[PENDING]";
+            }
         }
 
 
+        function parentLinkClicked(e) {
+            // if not the selected note 
 
-        // if (!e.classList.contains("active-notes-selected")) {
-        //     // not initial click
-        //     if (e.dataset.initialClick != "1") {
+            const output = document.querySelector(`#${e.dataset.type}-output`);
 
-        //         // "hide contents"
-        //         e.classList.toggle("notes-selected")
-        //         const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
-        //         sublinks.classList.toggle("sublinks-selected")
+            if (e.classList.contains("active-notes-selected")) {
+                // if current note is the active one
 
-        //     } else {
-        //         // initial click
-        //         // hides it instead of updating output
-        //         notesOutputHeading.innerText = e.innerText;
-        //         e.dataset.initialClick = "0"; // false
-        //     }
+                // hide contents
+                e.classList.remove("notes-selected")
+                const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
+                sublinks.classList.remove("sublinks-selected")
 
-        //     if (e.classList.contains("notes-selected")) {
-        //         e.classList.add("active-notes-selected")
-        //         activeNotesSelected.classList.remove("active-notes-selected")
-        //         activeNotesSelected = e;
-        //     }
-        // } else {
-        //     // "hide contents"
-        //     e.classList.toggle("notes-selected")
-        //     const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
-        //     sublinks.classList.toggle("sublinks-selected")
+                // hide output
+                output.classList.remove("output-selected")
+                activeOutputSelected = null;
 
-        //     // remove active selected
-        //     e.classList.add("active-notes-selected")
-        //     activeNotesSelected.classList.remove("active-notes-selected")
-        //     activeNotesSelected = e;
-        // }
+                // notes heading to pending
+                notesOutputHeading.innerText = "[PENDING]";
+
+                // strip it from active note selected status! 
+                e.classList.add("active-notes-selected")
+                activeNotesSelected.classList.remove("active-notes-selected")
+
+                // what happens when you remove active note status from the active note status??!  
+                activeNotesSelected = null;
+            } else {
+                if (activeNotesSelected) {
+                    // remove active note selected status from old active note! 
+                    activeNotesSelected.classList.remove("active-notes-selected")
+                }
+
+                // make active note
+                e.classList.add("active-notes-selected")
+                activeNotesSelected = e;
+
+                // make output visible // hide active one 
+                output.classList.add("output-selected")
+                if (activeOutputSelected) {
+                    activeOutputSelected.classList.remove("output-selected")
+                }
+                activeOutputSelected = output;
+
+                // reveal contents
+                e.classList.add("notes-selected")
+                const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
+                sublinks.classList.add("sublinks-selected")
+
+                // not current selected to show the content of the note 
+                notesOutputHeading.innerText = e.innerText;
+                e.dataset.initialClick = "0"; // false
+            }
 
 
-    }
-</script>
 
+            // if (!e.classList.contains("active-notes-selected")) {
+            //     // not initial click
+            //     if (e.dataset.initialClick != "1") {
+
+            //         // "hide contents"
+            //         e.classList.toggle("notes-selected")
+            //         const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            //         sublinks.classList.toggle("sublinks-selected")
+
+            //     } else {
+            //         // initial click
+            //         // hides it instead of updating output
+            //         notesOutputHeading.innerText = e.innerText;
+            //         e.dataset.initialClick = "0"; // false
+            //     }
+
+            //     if (e.classList.contains("notes-selected")) {
+            //         e.classList.add("active-notes-selected")
+            //         activeNotesSelected.classList.remove("active-notes-selected")
+            //         activeNotesSelected = e;
+            //     }
+            // } else {
+            //     // "hide contents"
+            //     e.classList.toggle("notes-selected")
+            //     const sublinks = document.querySelector("#" + e.getAttribute("for") + "-sublinks");
+            //     sublinks.classList.toggle("sublinks-selected")
+
+            //     // remove active selected
+            //     e.classList.add("active-notes-selected")
+            //     activeNotesSelected.classList.remove("active-notes-selected")
+            //     activeNotesSelected = e;
+            // }
+
+
+        }
+    </script>
+    
 	<script>
 		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
 		for (const link of mainNavigationLinks) {

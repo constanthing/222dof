@@ -7,6 +7,11 @@
 	font-family: "RobotoRegular";
 	src: url("../fonts/Roboto-Regular.ttf") format("truetype");
 }
+@font-face {
+	font-family: "RobotoBold";
+	src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+}
+
 
 :root {
 	/* --white: #d6d6d6; */
@@ -55,6 +60,9 @@ h6 {
 p {
 	letter-spacing: .03em;
 }
+strong {
+	font-family: "RobotoBold", "RobotoRegular", sans-serif;
+}
 
 a {
 	color: var(--white);
@@ -64,6 +72,51 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+
+pre.language-js {
+	border: .2em solid var(--dark-gray);
+	border-radius: .2em;
+	/* padding: 1em 0; */
+}
+.language-js:first-child {
+	font-size: .8em;
+}
+
+
+.clickable {
+	color: var(--medium-gray);
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+.clickable:hover {
+	cursor: default;
+	text-decoration: underline;
+	color: var(--white);
+}
+a.clickable:hover {
+	/* only links should have pointer */
+	cursor: pointer;
+}
+
+.flex {
+	display: flex;
+}
+.align-items-center {
+	align-items: center;
+}
+
+blockquote {
+	margin: 1em 0 1em 2em;
+	background: var(--medium-gray);
+	color: black;
+	padding: 1em;
+	border-radius: .3em;
+	border: .3em solid var(--dark-gray);
+	font-size: .9em;
+}
+
 
 /* ul > ul > ul label {
 	opacity: .9;

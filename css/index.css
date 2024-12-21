@@ -3,19 +3,6 @@
 }
 
 
-.clickable {
-	color: var(--medium-gray);
-}
-.clickable:hover {
-	cursor: default;
-	text-decoration: underline;
-	color: var(--white);
-}
-a.clickable:hover {
-	/* only links should have pointer */
-	cursor: pointer;
-}
-
 /* START OF month */
 
 .month {
@@ -49,6 +36,9 @@ a.clickable:hover {
 }
 
 /* END OF month */
+
+
+
 
 
 /* START of post  */
