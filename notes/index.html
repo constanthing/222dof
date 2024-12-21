@@ -217,12 +217,19 @@
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
+        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="eleventy" data-initial-click="1">
+            Eleventy (SSG)<img src="/222dof/vectors/right-arrow.svg" class="arrow">
+        </li>
+        <ul id="eleventy-sublinks" class="sublinks sublinks-selected">
+            <li><a href="https://www.11ty.dev/docs/collections-api/" target="_blank">Collections API (add your own collections!)</a></li>
+        </ul>
         <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">
             Miscellaneous<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="miscellaneous-sublinks" class="sublinks sublinks-selected">
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
             <li><a href="https://prismjs.com/index.html" target="_blank">PrismJS</a></li>
+            <li><a href="https://markdowntohtml.com/" target="_blank">HTML to Markdown</a></li>
         </ul>
 
     </ul>
@@ -243,6 +250,9 @@
         <p>EMPTY</p>
     </div>
     <div id="miscellaneous-output" class="output">
+        <p>EMPTY</p>
+    </div>
+    <div id="eleventy-output" class="output">
         <p>EMPTY</p>
     </div>
     <div id="javascript-output" class="output-selected output">
@@ -315,7 +325,7 @@
                 e.dataset.mode = "1";
 
                 for (const link of parentLinks) {
-                    if (activeNotesSelected && link != activeNotesSelected) {
+                    if (link != activeNotesSelected) {
                         // remove selected status
                         link.classList.remove("notes-selected")
                         // something with INVERT on img of non selected notes
@@ -328,7 +338,7 @@
                 img.src = "/222dof/vectors/reveal.svg";
                 e.dataset.mode = "0";
                 for (const link of parentLinks) {
-                    if (activeNotesSelected && link != activeNotesSelected) {
+                    if (link != activeNotesSelected) {
                         // remove selected status
                         link.classList.add("notes-selected")
                         // something with INVERT on img of non selected notes
