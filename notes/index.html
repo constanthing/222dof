@@ -133,6 +133,36 @@
     .output-selected {
         display: block;
     }
+
+    @media screen and (max-width: 1100px) {
+        #content {
+            flex-direction: column;
+        }
+        #container {
+            width: 100%;
+        }
+        #main-navigation {
+            padding: 0 2em;
+        }
+        #header-logo {
+            font-size: .7em;
+        }
+        #notes-navigation {
+            width: 100%;
+            border: none;
+            border-bottom: .1em solid var(--dark-gray);
+        }
+        #notes-output {
+            width: 100%;
+            padding: 2em;
+        }
+        blockquote {
+            margin: .5em 0 1em 0;
+        }
+        #main-footer {
+            padding: 2em;
+        }
+    }
 </style>
 <link rel="stylesheet" href="/222dof/css/prism-atom-dark.css">
 
@@ -167,11 +197,11 @@
             </div>
         </div>
 
-        <li class="notes-selected " onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
+        <li class="" onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
             Design <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
 
-        <ul id="design-sublinks" class="sublinks sublinks-selected">
+        <ul id="design-sublinks" class="sublinks ">
             <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
             <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building
                     your color palette</a></li>
@@ -179,9 +209,9 @@
                     last resort</a></li>
             <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="static-site-generators" data-initial-click="1">Static
+        <li class="" onclick="parentLinkClicked(this)" data-type="static-site-generators" data-initial-click="1">Static
             Site Generators <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
-        <ul id="static-site-generators-sublinks" class="sublinks sublinks-selected">
+        <ul id="static-site-generators-sublinks" class="sublinks ">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
             <li><a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/" target="_blank">Why static site generators are the next big thing</a></li>
             <li><a href="https://www.zachleat.com/web/introducing-eleventy/" target="_blank">Creator of Eleventy post
@@ -191,25 +221,26 @@
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub
+        <li class="" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub
             <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
-        <ul id="github-sublinks" class="sublinks sublinks-selected">
+        <ul id="github-sublinks" class="sublinks ">
             <li><a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank">Microsoft Github
                     Foundations Course</a></li>
             <li><a href="https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/" target="_blank">Microsoft Github Actions Course</a></li>
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
             <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">
+        <li class="" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">
             Web
             Development <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
-        <ul id="web-development-sublinks" class="sublinks sublinks-selected">
+        <ul id="web-development-sublinks" class="sublinks ">
             <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">MDN Course</a></li>
             <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations" target="_blank">Odin
                     Project</a></li>
+            <li><a href="https://roadmap.sh/" target="_blank">roadmap.sh</a></li>
         </ul>
         <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">
             JavaScript <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
@@ -217,16 +248,16 @@
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="eleventy" data-initial-click="1">
+        <li class="" onclick="parentLinkClicked(this)" data-type="eleventy" data-initial-click="1">
             Eleventy (SSG)<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
-        <ul id="eleventy-sublinks" class="sublinks sublinks-selected">
+        <ul id="eleventy-sublinks" class="sublinks ">
             <li><a href="https://www.11ty.dev/docs/collections-api/" target="_blank">Collections API (add your own collections!)</a></li>
         </ul>
-        <li class="notes-selected" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">
+        <li class="" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">
             Miscellaneous<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
-        <ul id="miscellaneous-sublinks" class="sublinks sublinks-selected">
+        <ul id="miscellaneous-sublinks" class="sublinks ">
             <li><a href="https://fontawesome.com/start" target="_blank">fontawesome.com</a></li>
             <li><a href="https://prismjs.com/index.html" target="_blank">PrismJS</a></li>
             <li><a href="https://markdowntohtml.com/" target="_blank">HTML to Markdown</a></li>
@@ -459,6 +490,11 @@
 			} else {
 				link.classList.add("unselected-main-navigation-link")
 			}
+		}
+
+		// header fonts look ugly on safari / ios devices
+		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+			document.querySelector("html").classList.add("safari");
 		}
 	</script>
 	</body>

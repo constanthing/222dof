@@ -77,6 +77,11 @@
 				link.classList.add("unselected-main-navigation-link")
 			}
 		}
+
+		// header fonts look ugly on safari / ios devices
+		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+			document.querySelector("html").classList.add("safari");
+		}
 	</script>
 	</body>
 </html>
