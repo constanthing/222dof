@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title> Notes | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
@@ -144,9 +145,7 @@
         #main-navigation {
             padding: 0 2em;
         }
-        #header-logo {
-            font-size: .7em;
-        }
+
         #notes-navigation {
             width: 100%;
             border: none;
@@ -278,7 +277,9 @@
         <p>EMPTY</p>
     </div>
     <div id="web-development-output" class="output">
-        <p>EMPTY</p>
+        <h3 class="output-subheading">Font size appearing abnormally small on smaller screens?</h3>
+        <p>Check that you have inserted the "viewport" metadata option in a <code>meta</code> tag!</p>
+        <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
     </div>
     <div id="miscellaneous-output" class="output">
         <p>EMPTY</p>
