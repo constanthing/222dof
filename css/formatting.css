@@ -53,6 +53,43 @@ blockquote {
     color: white;
 }
 
+.output details {
+    margin-top: .5em;
+    border: .1em solid var(--dark-gray);
+    padding: 1em;
+    border-radius: .3em;
+}
+/* li > (direct child) of details element */
+.output li:has(> details)  {
+    list-style-type: none;
+}
+.output details p { 
+    padding-left: 1em;
+    margin-bottom: 0;
+}
+
+.output :is(h2, h3, h4, h5, h6) + figure {
+    margin-top: .5em;
+}
+.output figure {
+    border: .1em solid var(--dark-gray);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .3em;
+    float: left;
+    margin-right: 1em;
+}
+.output figure img {
+    padding: 1.8em 0;
+}
+.output figcaption {
+    background: var(--dark-gray);
+    padding: 1em;
+    font-size: .8em;
+}
+
 @media screen and (max-width: 1100px) {
     blockquote {
         margin-left: 0;

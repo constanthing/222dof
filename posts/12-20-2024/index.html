@@ -117,8 +117,9 @@
 <span class="token punctuation">.</span><span class="token function">then</span> <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">400</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Bad Request"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">await</span> <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// go through every post</span>
@@ -130,10 +131,24 @@
         posts<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>post<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Now depending on your experience with web development, the code above may seem like gibberish. I have bad news... it will get even more complicated thatn that as you will have to deal with request headers, actions, body data, etc. Then you'll have to prepare for different server response codes!</p>
+<p>Now depending on your experience with web development, the code above may seem like gibberish. I have bad news... it will get even more complicated than that as you will have to deal with request headers, actions, body data, etc. Then you'll have to prepare for different server response codes!</p>
 <p>So, learning about computer networks is imperative to being a successful web developer! Let's start with defining what a computer network is!</p>
-<h3>What is a computer network?</h3>
-<p></p>
+<h2>A high-level view of computer networks</h2>
+<figure>
+    <img src="/222dof/vectors/network-example.png" alt="">
+    <figcaption>Simple depiction of a computer network.</figcaption>
+</figure>
+<p>A <strong>computer network</strong> is a system that allows computing devices to communicate with each other. To provide a practical example, say you are using a laptop that is connected to a router. That laptop and other devices connected to the router are part of a web known as a computer network.</p> 
+<h3>They can communicate with each other, but how?</h3>
+<p>As mentioned earlier a computer network allows computing devices to communicate with each other. In order for this to occur the computing devices on the network <strong>must speak the same language</strong>.</p>
+<p>Similarly to how in order for humans to understand each other we must speak or understand the same language.</p>
+<ul>
+    <li>Computing devices on a computer network must use a <strong>common communications protocol</strong> <a href="https://en.wikipedia.org/wiki/Communication_protocol" target="_blank" class="clickable"><small>(wiki.)</small></a>
+        <ul>
+            <li><details><summary>Communications Protocol</summary><p>Set of rules that describe how information is to be exchanged between entities</p></details></li>
+        </ul>
+    </li>
+</ul>
 
 
 </div>
