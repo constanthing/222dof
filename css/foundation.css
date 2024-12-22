@@ -286,6 +286,7 @@ a.clickable:hover {
 }
 #hamburger.hamburger-selected + #main-navigation-links {
 	display: flex;
+	gap: 1em;
 }
 @media screen and (max-width: 650px) {
 	#main-footer {

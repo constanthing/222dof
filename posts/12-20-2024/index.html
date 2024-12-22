@@ -3,11 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> A new beginning... I hope | 222dof </title>
+		<title> A new beginning... and computer networks | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
 <link href="/222dof/css/formatting.css" rel="stylesheet">
 <link href="/222dof/css/post.css" rel="stylesheet">
+<link rel="stylesheet" href="/222dof/css/prism-atom-dark.css">
 
 	</head>
 	<body>
@@ -33,7 +34,7 @@
 			
 <article class="output">
 <div id="post-header">
-	<h1> A new beginning... I hope</h1>
+	<h1> A new beginning... and computer networks</h1>
 	<div id="post-metadata">
 		<small>12-20-2024</small>
 	<ul id="post-navigation">
@@ -68,9 +69,10 @@
 		<button class="tag">ajax</button>
 	
 	
-</div>
+	</div>
 </div>
 
+<div id="post-body">
 
 
 <h2>About Me</h2>
@@ -81,16 +83,60 @@
     effect I made with JavaScript (notably how I got parallax scrolling to work) and him telling me to teach the class
     about it but I was too nervous.
 </p>
-<blockquote>I passionate until I was not.</blockquote>
-<p> Well, I think that stuck with me because now I dream of teaching others how to code. However, there is an issue... I
-    can't. Well not well enought to go around wasting others time on information that I have yet to master. </p>
-<p>DRAFT</p>
+<blockquote>I was passionate until I was not.</blockquote>
+<p> Well, I think that stuck with me because now I <strong>dream</strong> of teaching others how to code. However, there is an issue... <strong>I
+    can't.</strong> Well not well enough to go around wasting others time on information that I have yet to master. </p>
 <h3>About this site</h3>
 <p>Motivation was always a big problem for me. I would make a website but then I would think it looks, runs, and feels terrible. So I would, gradually with every project, lose a little hope at ever becoming a real web developer. Until only a couple of weeks ago I decided to go back and look at some of the projects I have made. </p>
 <p>I was surprised because in hindsight they didn't look all that bad and are quite impressive -- to me. I made a note taking application using Django and Auth0. I made a gif app with Express and MangoDB. I made a e-commerce website too. I don't know how I did any of that now and then it struck me.</p>
-<blockquote>Why don't I start a website about programming everyday? Give myself a challenge and reference points to look back on my progress. I can also fulfill my dream a little bit of teaching others by designing this website around an educational model.</blockquote>
-<p>So, here we are now my first post of 222! I didn't want to make this solely a website with posts about my learnings and obstacles. I wanted to make it a <strong>resource</strong> for aspiring web developers who are also lacking motivation, unclear of their path, or looking for tips.</p>
+<blockquote>"Why don't I start a website about programming everyday? Give myself a challenge and reference points to look back on my progress. I can also fulfill my dream a little bit of teaching others by designing this website around an educational model."</blockquote>
+<p>So, here we are now my first post of 222! I didn't want to make this solely a website with posts about my learnings and obstacles. I wanted to make it a <strong>resource</strong> for aspiring web developers who are also:</p>
+<ul>
+    <li>lacking motivation</li>
+    <li>unclear of their path</li>
+    <li>need tips</li>
+</ul>
+<p>What better way to start off these 222 days than talking about the foundation of web development?</p>
+<h2>Why care about computer networks?</h2>
+<p>When you visit a website what happens? How does a set of texts, images, fonts, videos, etc. suddenly appear on your screen? Is it wizardry and <strong>why</strong> is it important for web developers to learn? Shouldn't web developers focus their attention on how to create websites not how they are loaded into a browser?</p>
+<p>All valid questions that ultimately lead to one answer...</p> 
+<blockquote>It's important to have a strong foundation of the engine you are working on.</blockquote>
+<p>In my limited experience as a web developer there are two types of websites one can make:</p>
+<ul>
+    <li>static websites</li>
+    <li>dynamic websites</li>
+</ul>
+<p>As a <strong>beginner</strong> you will be largely making <strong>static websites</strong> which involve little to <strong>zero</strong> knowledge about computer networks. As you progress, however, you may want to <strong>update</strong> the <strong>content</strong> of your website based on specific <strong>conditions</strong> from <strong>data/information delivered</strong> from a server.</p>
+<p>Websites that update their content based on conditions from the data received from a server are called <strong>dynamic websites</strong> and make up most of the websites you interact with in your day to day life.</p>
+<p>As a web developer you are going to be writing JavaScript code that makes requests to servers for data/information like so:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// get html element that contains all the posts</span>
+<span class="token keyword">const</span> posts <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#posts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">// make request to server</span>
+<span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"myserver.com/posts"</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span> <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">400</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Bad Request"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">await</span> <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// go through every post</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> post <span class="token keyword">of</span> data<span class="token punctuation">.</span>posts<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// create html element to display post description on webpage</span>
+        <span class="token keyword">const</span> post <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        post<span class="token punctuation">.</span>innerText <span class="token operator">=</span> post<span class="token punctuation">.</span>desc<span class="token punctuation">;</span>
+        <span class="token comment">// add post to html webpage</span>
+        posts<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>post<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Now depending on your experience with web development, the code above may seem like gibberish. I have bad news... it will get even more complicated thatn that as you will have to deal with request headers, actions, body data, etc. Then you'll have to prepare for different server response codes!</p>
+<p>So, learning about computer networks is imperative to being a successful web developer! Let's start with defining what a computer network is!</p>
+<h3>What is a computer network?</h3>
+<p></p>
+
+
+</div>
 
 </article>
 

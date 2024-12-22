@@ -12,3 +12,16 @@
     position: sticky;
     top: 1em;
 }
+
+#post-body ul {
+    color: var(--light-gray);
+}
+
+@media screen and (max-width: 650px) {
+    #content {
+        padding: 0;
+    }
+    #post-body {
+        padding: 0 2em;
+    }
+}
