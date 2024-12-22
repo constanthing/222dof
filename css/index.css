@@ -71,17 +71,7 @@
 }
 
 
-.tag {
-	padding: .3em .5em;
-	font-size: .7em;
-	background: var(--light-gray);
-	border: none;
-	border-radius: 5%;
-	color: var(--dark-gray);
-	background: var(--light-gray);
-	border: .1em solid var(--dark-gray);
-	border-radius: .2em;
-}
+
 
 .unselected-main-navigation-link {
 	color: unset;

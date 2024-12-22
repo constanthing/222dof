@@ -6,6 +6,7 @@
 		<title> Notes | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
+<link href="/222dof/css/formatting.css" rel="stylesheet">
 <style>
     ul {
         margin: 0;
@@ -112,27 +113,27 @@
     }
 
 
+    /* OUTPUT */
+
     #notes-output {
         width: 70%;
         /* height: 100%; */
     }
     #notes-output-heading {
-        margin-bottom: 1em;
+        /* margin-bottom: 1em; */
     }
     #notes-output h2, h3, h4, h5, h6 {
-        font-family: "RobotoRegular", sans-serif !important;
+        /* font-family: "RobotoRegular", sans-serif !important; */
     }
     .output-subheading {
-        margin: 2em 0 .3em 0;
-        color: var(--medium-gray);
+        /* margin: 2em 0 .3em 0; */
+        /* color: var(--medium-gray); */
     }
 
     .output {
         display: none;
     }
-    .output p {
-        margin: .5em 0;
-    }
+
 
     .output-selected {
         display: block;
@@ -154,7 +155,7 @@
             padding: 2em;
         }
         blockquote {
-            margin: .5em 0 1em 0;
+            /* margin: .5em 0 1em 0; */
         }
 
     }
@@ -278,7 +279,7 @@
     </div>
     <div id="web-development-output" class="output">
         <h3 class="output-subheading">Font size appearing abnormally small on smaller screens?</h3>
-        <p>Check that you have inserted the "viewport" metadata option in a <code>meta</code> tag!</p>
+        <p>Check that you have inserted the <code class="code">viewport</code> metadata option in a <code class="code">meta</code> tag!</p>
         <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
         <h3 class="output-subheading">gap grid/flexbox property</h3>
         <p>When trying to provide space around elements in flexbox and grid you might have done this:</p>

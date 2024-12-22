@@ -65,6 +65,16 @@ body {
 	font-family: "RobotoRegular", sans-serif;
 }
 
+.tag {
+	padding: .3em .5em;
+	font-size: .7em;
+	border-radius: 5%;
+	background: var(--light-gray);
+	border: .1em solid var(--dark-gray);
+	border-radius: .2em;
+	color: black;
+}
+
 h1,
 h2,
 h3,
@@ -129,17 +139,6 @@ a.clickable:hover {
 .align-items-center {
 	align-items: center;
 }
-
-blockquote {
-	margin: 1em 0 1em 2em;
-	background: var(--medium-gray);
-	color: black;
-	padding: 1em;
-	border-radius: .3em;
-	border: .3em solid var(--dark-gray);
-	font-size: .9em;
-}
-
 
 /* ul > ul > ul label {
 	opacity: .9;
@@ -304,6 +303,7 @@ blockquote {
 		display: block;
 	}
 	#main-navigation {
+
 		height: unset;
 		padding: 2em !important;
 		align-items: start;
@@ -311,12 +311,18 @@ blockquote {
 	#main-navigation-links {
 		margin-top: 2em;
 		display: none;
+		flex-direction: column;
+		text-align: right;
+
+	}
+	#main-navigation-links li {
+		padding-right: 0;
 	}
 	.month {
 		width: 100%;
 	}
 	#main-navigation {
-		font-size: .8em;
+		/* font-size: .8em; */
 	}
 	.month {
 		padding: 2em 1em !important;
@@ -324,14 +330,5 @@ blockquote {
 	.post {
 		margin-right: 0 !important;
 		margin-left: 0 !important;
-	}
-}
-@media screen and (max-width: 420px) {
-	#main-navigation-links {
-		flex-direction: column;
-		text-align: right;
-	}
-	#main-navigation-links li {
-		padding-right: 0;
 	}
 }

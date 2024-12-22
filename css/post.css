@@ -1,0 +1,14 @@
+#content {
+    padding-top: 0;
+}
+.output h1 {
+    margin-bottom: 0;
+}
+#post-header {
+    background: black;
+    padding: 2em;
+}
+#post-navigation {
+    position: sticky;
+    top: 1em;
+}
