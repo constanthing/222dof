@@ -2,6 +2,8 @@ strong {
     color: var(--light-gray);
 }
 
+
+
 blockquote {
     margin: 1em 0 1em 2em;
     background: var(--medium-gray);
@@ -10,6 +12,13 @@ blockquote {
     border-radius: .3em;
     border: .3em solid var(--dark-gray);
     font-size: .9em;
+
+    /* when close to a float element
+    it goes under it... therefore hide the
+    overflow content to make width not
+    go beyond floated element
+     */
+    overflow: hidden;
 }
 
 .output blockquote p {
@@ -80,19 +89,32 @@ blockquote {
     border-radius: .3em;
     float: left;
     margin-right: 1em;
+    margin-bottom: 1em;
+}
+.output .figure-float-right {
+    float: right;
+    margin-right: 0;
+    margin-left: 1em;
 }
 .output figure img {
-    padding: 1.8em 0;
+    padding: 1.8em;
 }
 .output figcaption {
     background: var(--dark-gray);
     padding: 1em;
     font-size: .8em;
+    text-align: center;
+    width: 100%;
 }
 
 @media screen and (max-width: 1100px) {
     blockquote {
         margin-left: 0;
         margin-right: 0;
+    }
+}
+@media screen and (max-width: 560px) {
+    .output figure {
+        width: 100%;
     }
 }

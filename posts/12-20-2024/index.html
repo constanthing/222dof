@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> A new beginning... and computer networks | 222dof </title>
+		<title> A new beginning... and computer networks (Part One) | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
 <link href="/222dof/css/formatting.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 			
 <article class="output">
 <div id="post-header">
-	<h1> A new beginning... and computer networks</h1>
+	<h1> A new beginning... and computer networks (Part One)</h1>
 	<div id="post-metadata">
 		<small>12-20-2024</small>
 	<ul id="post-navigation">
@@ -145,11 +145,71 @@
 <ul>
     <li>Computing devices on a computer network must use a <strong>common communications protocol</strong> <a href="https://en.wikipedia.org/wiki/Communication_protocol" target="_blank" class="clickable"><small>(wiki.)</small></a>
         <ul>
-            <li><details><summary>Communications Protocol</summary><p>Set of rules that describe how information is to be exchanged between entities</p></details></li>
+            <li>Communications protocol = set of rules that describe how information is to be exchanged between entities</li>
         </ul>
     </li>
 </ul>
 
+<h3>The Internet</h3>
+<figure class="figure-float-right">
+    <img src="/222dof/vectors/internet-example.svg" alt="">
+    <figcaption>Simple depiction of the Internet.</figcaption>
+</figure>
+<p>We've established that in a computer network you can communicate with other devices also in the same network. But, what if we want to communicate with devices outside our network?</p>
+<p>The <strong>Internet</strong> is, to put it succinctly, a <strong>network of networks</strong>. This means its a system in which computer networks can communicate with each other. To be more specific, the Internet is a globally connected set of computer networks that all use a suite of common protocols.</p>
+<h3>Deeper look at the parts of a computer network</h3>
+<p><strong>Hosts/Nodes</strong> are single computing devices attached to a network. Hosts can have different purposes in a network similarly to how humans have different purposes -- albeit hosts don't have nearly as much options. A host can <strong>act</strong> as a <strong>server</strong>, <strong>client</strong>, or <strong>both</strong>!</p>
+<ul>
+    <li><strong>Server</strong> is a host that listens for inbound network connections and provides services to other hosts.</li>
+    <li><strong>Client</strong> is a host that makes outbound network connections and requests services from network servers.</li>
+</ul>
+<p>It's important to realize that any computer (host) can be a server as long as it has the appropriate software (instructions). Therefore, when thinking of a server don't think it's some magical computing device. As your own laptop can be a server if adjusted correctly.</p>
+<p>Some computing devices are constructed specifically to act as servers as a normal laptop wouldn't be powerful or efficient enough to handle large requests. <a href="https://en.wikipedia.org/wiki/Server_(computing)" target="_blank" class="clickable"><small>(wiki.)</small></a></p>
+<blockquote>A client makes a request to a server and a server replies with a response.</blockquote>
+<h2>Communicating on and across networks</h2>
+<p>So far, we have looked at what a computer network is and the parts such as clients and servers. But we have yet to describe how these hosts communicate with each other on their own networks and across networks.</p>
+<p>As mentioned earlier computing devices must speak the same language -- use a common communciations protocol. The <strong>Internet Protocol Suite</strong> is a standardized framework for communciation on the Internet. The IPS ensures that computing devices on a computer network speak the language.</p>
+<figure class="figure-float-right">
+    <img src="/222dof/vectors/ips.png" alt="">
+    <figcaption>The Internet Protocol Suite.</figcaption>
+</figure>
+<p>So if a device wants to communicate on the internet it is most likely going to utilize the Internet Protocol Suite to do so. One should note that a name that is sometimes used to refer to the four layer network model the Internet Protocol Suite is designed around is called <strong>TCP/IP model</strong>.</p>
+<h3>Network Stacks</h3>
+<p>The TCP/IP model refers to the four layer model the Internet Protocl Suite is designed around but what is a network stack? A <strong>network stack</strong> is a layered model of network protocols.</p>
+<blockquote>A layer in a network stack reprsents a scope of responsibilities that are fulfilled by the protocols in the layer.</blockquote>
+<p>Protocols in the lowest layers interact with networking hardware. Protocols in intermediate layers provide services (routing, addressing). Protocols in the upper layers interact with applications.</p>
+<h3>Deeper look at the TCP/IP model</h3>
+<p>As mentioned earlier, the TCP/IP model is a four layer model that the IPS is designed around and network layers represent a scope of responsbilities that are fulfilled by the protocols in those layers. What are the responsbilities of the layers in the TCP/IP model?</p>
+<p>The TCP/IP model is compromised of the following layers:</p>
+<ul>
+    <li>Application
+        <ul>
+            <li>Protocols provide application specific functionality by structuring the data used in process-to-process communication across a network.</li>
+            <li>Protocols <strong>used</strong>: HTTP, SSH</li>
+        </ul>
+    </li>
+    <li>Transport
+        <ul>
+            <li>Protocols provide a communications channel for applications to send/receive data between hosts.</li>
+            <li>Protocols <strong>used</strong>: TCP, UDP</li>
+        </ul>
+    </li>
+    <li>Internet
+        <ul>
+            <li>Protocols provide a way to communicate across networks. This layer is responsible for identifying hosts with addresses and enabling the routing of data from network to network across the internet.</li>
+            <li>Protocols <strong>used</strong>: IP</li>
+        </ul>
+    </li>
+    <li>Link
+        <ul>
+            <li>Protocols provide a way to communicate on a local network.</li>
+            <li>Protocols <strong>used</strong>: Wi-Fi, Ethernet</li>
+        </ul>
+    </li>
+</ul>
+<h2>Fin</h2>
+<p>I think that is enough information for one post. Words can't express how excited -- word used to express... -- I am to start this journey. This time programming feels right and I feel motivated more than ever.</p>
+<p>Computer networks are imperative to being a web developer and they are also cool to learn about. The <strong>post</strong> on <strong>12/24/2024</strong> will be a direct <strong>sequel</strong> to this post or <strong>part-two</strong> if you will.</p>
 
 </div>
 

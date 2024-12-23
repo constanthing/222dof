@@ -65,7 +65,9 @@ body {
 	font-family: "RobotoRegular", sans-serif;
 }
 
-.tag {
+/* button.tag to reduce collision
+with html Prism highlighting */
+button.tag {
 	padding: .3em .5em;
 	font-size: .7em;
 	border-radius: 5%;
