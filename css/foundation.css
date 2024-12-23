@@ -193,7 +193,7 @@ a.clickable:hover {
 
 
 #content {
-	overflow: hidden;
+	/* overflow: hidden; */
 	min-height: 60vh;
 	height: 100%;
 	padding: 2em 0;

@@ -8,7 +8,9 @@
 .month {
 	background: black;
 	padding: 2em;
-	background: linear-gradient(1deg, #000000, #000000b0, #0000008c);
+	/* background: linear-gradient(1deg, #000000, #000000b0, #0000008c); */
+	position: sticky;
+	top: 0;
 }
 
 .month-header {

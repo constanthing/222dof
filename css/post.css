@@ -8,13 +8,18 @@
     background: black;
     padding: 2em;
 }
-#post-navigation {
-    position: sticky;
-    top: 1em;
-}
 
 #post-body ul {
     color: var(--light-gray);
+}
+
+
+#post-route {
+    background: black;
+    color: var(--white);
+    padding: .5em 1em;
+    /* position: sticky; */
+    top: 0;
 }
 
 @media screen and (max-width: 650px) {
@@ -25,3 +30,4 @@
         padding: 2em;
     }
 }
+

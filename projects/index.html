@@ -22,6 +22,7 @@
 					<ul id="main-navigation-links">
 						<li><a href="/222dof/progress/">progress</a></li>
 						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/futurePosts/">future posts</a></li>
 						<li><a href="/222dof/notes/">notes</a></li>
 						<li><a href="/222dof/projects/">projects</a></li>
 					</ul>
@@ -121,34 +122,43 @@
 	
 	
 	<script>
-		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-		for (const link of mainNavigationLinks) {
-			if (window.location.pathname.indexOf(link.innerText) != -1) {
-				link.classList.add("selected-link")
-			} else {
-				link.classList.add("unselected-main-navigation-link")
-			}
-		}
+		window.addEventListener("load", () => {
+			const counterDay = document.querySelector("#counter-day");
+			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
+			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
+			counterDay.innerText = dayDifference;
 
-		// header fonts look ugly on safari / ios devices
-		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-			document.querySelector("html").classList.add("safari");
-		}
 
-		function hamburgerClick(e) {
-			const mode = e.dataset.mode;
-			// 0 = hide
-			// 1 = reveal
-			if (mode == "0") {
-				// reveal
-				e.classList.add("hamburger-selected")
-				e.dataset.mode = "1";
-			} else {
-				// hide
-				e.classList.remove("hamburger-selected")
-				e.dataset.mode = "0";
+			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+			for (const link of mainNavigationLinks) {
+				if (window.location.pathname.indexOf(link.innerText) != -1) {
+					link.classList.add("selected-link")
+				} else {
+					link.classList.add("unselected-main-navigation-link")
+				}
 			}
-		}
+
+			// header fonts look ugly on safari / ios devices
+			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+				document.querySelector("html").classList.add("safari");
+			}
+
+			function hamburgerClick(e) {
+				const mode = e.dataset.mode;
+				// 0 = hide
+				// 1 = reveal
+				if (mode == "0") {
+					// reveal
+					e.classList.add("hamburger-selected")
+					e.dataset.mode = "1";
+				} else {
+					// hide
+					e.classList.remove("hamburger-selected")
+					e.dataset.mode = "0";
+				}
+			}
+
+		})
 	</script>
 	</body>
 </html>

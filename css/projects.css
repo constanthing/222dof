@@ -116,3 +116,12 @@ tbody tr a::after {
         width: 50%;
     }
 }
+@media screen and (max-width: 560px) {
+    .project-image {
+        width: 80%;
+    }
+    h2 {
+        position: sticky;
+        top: 0;
+    }
+}

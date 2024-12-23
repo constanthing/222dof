@@ -22,6 +22,7 @@
 					<ul id="main-navigation-links">
 						<li><a href="/222dof/progress/">progress</a></li>
 						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/futurePosts/">future posts</a></li>
 						<li><a href="/222dof/notes/">notes</a></li>
 						<li><a href="/222dof/projects/">projects</a></li>
 					</ul>
@@ -53,7 +54,7 @@
 				<h3 class="post-title"><a href="/222dof/posts/12-20-2024" class="clickable">A new beginning... and computer networks (Part One)</a></h3>
 				<small class="post-date">12-20-2024</small>
 				<!-- description <= 20 words (some can have no description at all) -->
-				<p class="post-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio nesciunt possimus deleniti itaque officia reiciendis commodi ducimus quam eos. Aliquid!</p>
+				<p class="post-desc">In this first post I will not only go over computer networks but also describe the purpose of this website and a little bit about me.</p>
 			</div>
 			<div class="post-categories">
 				
@@ -61,15 +62,11 @@
 				
 				
 				
-				<button class="tag">javascript</button>
-				
-				
-				
 				<button class="tag">computer networks</button>
 				
 				
 				
-				<button class="tag">ajax</button>
+				<button class="tag">javascript</button>
 				
 				
 				
@@ -78,10 +75,10 @@
 		
 		<div class="post">
 			<div>
-				<h3 class="post-title"><a href="/222dof/posts/12-21-2024" class="clickable">JavaScript why?</a></h3>
+				<h3 class="post-title"><a href="/222dof/posts/12-21-2024" class="clickable">Skeleton of a website</a></h3>
 				<small class="post-date">12-21-2024</small>
 				<!-- description <= 20 words (some can have no description at all) -->
-				<p class="post-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio nesciunt possimus deleniti itaque officia reiciendis commodi ducimus quam eos. Aliquid!</p>
+				<p class="post-desc">It&#39;s helpful to think of a website like a human -- creepy. No but seriously a website has a skeleton, skin, and brain.</p>
 			</div>
 			<div class="post-categories">
 				
@@ -93,23 +90,15 @@
 				
 				
 				
-				<button class="tag">js</button>
-				
-				
-				
-				<button class="tag">css</button>
-				
-				
-				
 			</div>
 		</div>
 		
 		<div class="post">
 			<div>
-				<h3 class="post-title"><a href="/222dof/posts/12-22-2024" class="clickable">So... computer networks are confusing</a></h3>
+				<h3 class="post-title"><a href="/222dof/posts/12-22-2024" class="clickable">A new beginning... and computer networks (part two)</a></h3>
 				<small class="post-date">12-22-2024</small>
 				<!-- description <= 20 words (some can have no description at all) -->
-				<p class="post-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio nesciunt possimus deleniti itaque officia reiciendis commodi ducimus quam eos. Aliquid!</p>
+				<p class="post-desc">DRAFT</p>
 			</div>
 			<div class="post-categories">
 				
@@ -121,11 +110,7 @@
 				
 				
 				
-				<button class="tag">internet</button>
-				
-				
-				
-				<button class="tag">www</button>
+				<button class="tag">javascript</button>
 				
 				
 				
@@ -341,34 +326,43 @@
 </script>
 
 	<script>
-		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-		for (const link of mainNavigationLinks) {
-			if (window.location.pathname.indexOf(link.innerText) != -1) {
-				link.classList.add("selected-link")
-			} else {
-				link.classList.add("unselected-main-navigation-link")
-			}
-		}
+		window.addEventListener("load", () => {
+			const counterDay = document.querySelector("#counter-day");
+			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
+			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
+			counterDay.innerText = dayDifference;
 
-		// header fonts look ugly on safari / ios devices
-		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-			document.querySelector("html").classList.add("safari");
-		}
 
-		function hamburgerClick(e) {
-			const mode = e.dataset.mode;
-			// 0 = hide
-			// 1 = reveal
-			if (mode == "0") {
-				// reveal
-				e.classList.add("hamburger-selected")
-				e.dataset.mode = "1";
-			} else {
-				// hide
-				e.classList.remove("hamburger-selected")
-				e.dataset.mode = "0";
+			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+			for (const link of mainNavigationLinks) {
+				if (window.location.pathname.indexOf(link.innerText) != -1) {
+					link.classList.add("selected-link")
+				} else {
+					link.classList.add("unselected-main-navigation-link")
+				}
 			}
-		}
+
+			// header fonts look ugly on safari / ios devices
+			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+				document.querySelector("html").classList.add("safari");
+			}
+
+			function hamburgerClick(e) {
+				const mode = e.dataset.mode;
+				// 0 = hide
+				// 1 = reveal
+				if (mode == "0") {
+					// reveal
+					e.classList.add("hamburger-selected")
+					e.dataset.mode = "1";
+				} else {
+					// hide
+					e.classList.remove("hamburger-selected")
+					e.dataset.mode = "0";
+				}
+			}
+
+		})
 	</script>
 	</body>
 </html>

@@ -175,6 +175,7 @@
 					<ul id="main-navigation-links">
 						<li><a href="/222dof/progress/">progress</a></li>
 						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/futurePosts/">future posts</a></li>
 						<li><a href="/222dof/notes/">notes</a></li>
 						<li><a href="/222dof/projects/">projects</a></li>
 					</ul>
@@ -307,6 +308,25 @@
     <span class="token property">padding-top</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
     <span class="token comment">/* stop scroll 2em above the element content */</span>
 <span class="token punctuation">}</span></code></pre>
+        <h3><code class="code">position:sticky</code> not working?</h3>
+        <p>Check for ancestor elements that have <code class="code">overflow: hidden</code> because that may be the culprit.</p>
+        <blockquote>
+            position: sticky will not work if any of its ancestor elements have overflow: hidden, overflow: scroll, or overflow: auto. This is because sticky positioning is based on the parent element’s scroll container, so if the parent has overflow settings that prevent scrolling, sticky behavior is disabled.
+        </blockquote>
+        <p>Also make sure to provide at least one of the <code class="code">top</code>, <code class="code">right</code>, <code class="code">bottom</code>, or <code class="code">left</code> properties.</p>
+        <h3><code class="code">requestAnimationFrame()</code></h3>
+        <pre class="language-js"><code class="language-js"><span class="token keyword">let</span> lastScrollY <span class="token operator">=</span> window<span class="token punctuation">.</span>scrollY<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">checkSticky</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>scrollY <span class="token operator">!==</span> lastScrollY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    lastScrollY <span class="token operator">=</span> window<span class="token punctuation">.</span>scrollY<span class="token punctuation">;</span>
+    <span class="token comment">// Your function logic here (e.g., sticky element check)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Scrolling!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>checkSticky<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>checkSticky<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
     </div>
     <div id="miscellaneous-output" class="output">
         <p>EMPTY</p>
@@ -315,7 +335,7 @@
         <p>EMPTY</p>
     </div>
     <div id="javascript-output" class="output-selected output">
-        <h3 class="output-subheading">Using insertBefore(undefined, ...)</h3>
+        <h3 class="output-subheading">Using <code class="code">insertBefore(undefined, ...)</code></h3>
         <p>
             The method insertBefore() expects <strong>two</strong> arguments: the node to insert and the reference node. If you pass
             undefined as the reference node, it essentially appends the new node to the end of the parent.
@@ -510,34 +530,43 @@
     </script>
     
 	<script>
-		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-		for (const link of mainNavigationLinks) {
-			if (window.location.pathname.indexOf(link.innerText) != -1) {
-				link.classList.add("selected-link")
-			} else {
-				link.classList.add("unselected-main-navigation-link")
-			}
-		}
+		window.addEventListener("load", () => {
+			const counterDay = document.querySelector("#counter-day");
+			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
+			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
+			counterDay.innerText = dayDifference;
 
-		// header fonts look ugly on safari / ios devices
-		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-			document.querySelector("html").classList.add("safari");
-		}
 
-		function hamburgerClick(e) {
-			const mode = e.dataset.mode;
-			// 0 = hide
-			// 1 = reveal
-			if (mode == "0") {
-				// reveal
-				e.classList.add("hamburger-selected")
-				e.dataset.mode = "1";
-			} else {
-				// hide
-				e.classList.remove("hamburger-selected")
-				e.dataset.mode = "0";
+			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+			for (const link of mainNavigationLinks) {
+				if (window.location.pathname.indexOf(link.innerText) != -1) {
+					link.classList.add("selected-link")
+				} else {
+					link.classList.add("unselected-main-navigation-link")
+				}
 			}
-		}
+
+			// header fonts look ugly on safari / ios devices
+			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+				document.querySelector("html").classList.add("safari");
+			}
+
+			function hamburgerClick(e) {
+				const mode = e.dataset.mode;
+				// 0 = hide
+				// 1 = reveal
+				if (mode == "0") {
+					// reveal
+					e.classList.add("hamburger-selected")
+					e.dataset.mode = "1";
+				} else {
+					// hide
+					e.classList.remove("hamburger-selected")
+					e.dataset.mode = "0";
+				}
+			}
+
+		})
 	</script>
 	</body>
 </html>

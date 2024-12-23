@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> JavaScript why? | 222dof </title>
+		<title> Skeleton of a website | 222dof </title>
 		<link href="/222dof/css/foundation.css" rel="stylesheet">
 		
 <link href="/222dof/css/formatting.css" rel="stylesheet">
@@ -24,6 +24,7 @@
 					<ul id="main-navigation-links">
 						<li><a href="/222dof/progress/">progress</a></li>
 						<li><a href="/222dof/goals/">goals</a></li>
+						<li><a href="/222dof/futurePosts/">future posts</a></li>
 						<li><a href="/222dof/notes/">notes</a></li>
 						<li><a href="/222dof/projects/">projects</a></li>
 					</ul>
@@ -34,7 +35,7 @@
 			
 <article class="output">
 <div id="post-header">
-	<h1> JavaScript why?</h1>
+	<h1> Skeleton of a website</h1>
 	<div id="post-metadata">
 		<small>12-21-2024</small>
 	<ul id="post-navigation">
@@ -46,15 +47,11 @@
 		<button class="tag">html</button>
 	
 	
-		
-		<button class="tag">js</button>
-	
-	
-		
-		<button class="tag">css</button>
-	
-	
 	</div>
+</div>
+
+<div id="post-route">
+<p> /EMPTY </p>
 </div>
 
 <div id="post-body">
@@ -82,34 +79,43 @@
 <script src="/222dof/js/post.js"></script>
 
 	<script>
-		const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-		for (const link of mainNavigationLinks) {
-			if (window.location.pathname.indexOf(link.innerText) != -1) {
-				link.classList.add("selected-link")
-			} else {
-				link.classList.add("unselected-main-navigation-link")
-			}
-		}
+		window.addEventListener("load", () => {
+			const counterDay = document.querySelector("#counter-day");
+			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
+			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
+			counterDay.innerText = dayDifference;
 
-		// header fonts look ugly on safari / ios devices
-		if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-			document.querySelector("html").classList.add("safari");
-		}
 
-		function hamburgerClick(e) {
-			const mode = e.dataset.mode;
-			// 0 = hide
-			// 1 = reveal
-			if (mode == "0") {
-				// reveal
-				e.classList.add("hamburger-selected")
-				e.dataset.mode = "1";
-			} else {
-				// hide
-				e.classList.remove("hamburger-selected")
-				e.dataset.mode = "0";
+			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+			for (const link of mainNavigationLinks) {
+				if (window.location.pathname.indexOf(link.innerText) != -1) {
+					link.classList.add("selected-link")
+				} else {
+					link.classList.add("unselected-main-navigation-link")
+				}
 			}
-		}
+
+			// header fonts look ugly on safari / ios devices
+			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+				document.querySelector("html").classList.add("safari");
+			}
+
+			function hamburgerClick(e) {
+				const mode = e.dataset.mode;
+				// 0 = hide
+				// 1 = reveal
+				if (mode == "0") {
+					// reveal
+					e.classList.add("hamburger-selected")
+					e.dataset.mode = "1";
+				} else {
+					// hide
+					e.classList.remove("hamburger-selected")
+					e.dataset.mode = "0";
+				}
+			}
+
+		})
 	</script>
 	</body>
 </html>
