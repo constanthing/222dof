@@ -295,6 +295,18 @@
         <pre class="language-css"><code class="language-css"><span class="token property">text-shadow</span><span class="token punctuation">:</span> 0 1px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span></code></pre>
         <p>[RESEARCH]</p>
 
+        <h3>Automatic scroll to close to element?</h3>
+        <p>When you have a link that points to an element in your page you may run into the trouble of the scroll appearing too close to the element content or border.</p>
+        <p>No counteract this simply add padding to the top of the element:</p>
+        <pre class="language-css"><code class="language-css"><span class="token selector">html</span> <span class="token punctuation">{</span>
+    ...
+    <span class="token property">scroll-behavior</span><span class="token punctuation">:</span> smooth<span class="token punctuation">;</span>
+    ...
+<span class="token punctuation">}</span>
+<span class="token selector">:is(h2, h3, h4, h5, h6)</span> <span class="token punctuation">{</span>
+    <span class="token property">padding-top</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+    <span class="token comment">/* stop scroll 2em above the element content */</span>
+<span class="token punctuation">}</span></code></pre>
     </div>
     <div id="miscellaneous-output" class="output">
         <p>EMPTY</p>

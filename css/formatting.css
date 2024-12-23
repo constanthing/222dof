@@ -44,7 +44,8 @@ blockquote {
 
 .output :is(h2, h3, h4, h5, h6) {
     font-family: "RobotoBold", sans-serif !important;
-    margin: 2em 0 .3em 0;
+    padding-top: 2em;
+    margin: 0 0 .3em 0;
     color: var(--white);
 }
 .output :is(h2, h3, h4, h5, h6)::after {
