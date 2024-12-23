@@ -48,7 +48,6 @@
 	
 	
 	<script>
-		window.addEventListener("load", () => {
 			const counterDay = document.querySelector("#counter-day");
 			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
 			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
@@ -83,8 +82,6 @@
 					e.dataset.mode = "0";
 				}
 			}
-
-		})
 	</script>
 	</body>
 </html>
