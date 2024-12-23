@@ -15,8 +15,9 @@
 		<div id="container">
 			<nav id="main-navigation">
 				<div id="header-logo">
-					<h1><a href="/222dof/">222 days of code</a></h1>
-					<small>posts everyday (until August 1st)</small>
+					<h1><small id="counter-day"></small>
+					<a href="/222dof/">222 days of code</a></h1>
+					<small>posts everyday until August 1st</small>
 				</div>
 				
 				<div id="main-navigation-menu">
@@ -24,7 +25,6 @@
 					<ul id="main-navigation-links">
 						<li><a href="/222dof/progress/">progress</a></li>
 						<li><a href="/222dof/goals/">goals</a></li>
-						<li><a href="/222dof/futurePosts/">future posts</a></li>
 						<li><a href="/222dof/notes/">notes</a></li>
 						<li><a href="/222dof/projects/">projects</a></li>
 					</ul>
@@ -70,7 +70,6 @@
 
 			<footer id="main-footer">
 				<div id="main-footer-about">
-					<small id="counter"><span id="counter-day">0</span> / <span id="counter-goal">222</span></small>
 					<p>222 days of blog posts on my journey to becoming a web developer. I hope this can serve as a resource
 					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
 				</div>
@@ -86,7 +85,7 @@
 			const counterDay = document.querySelector("#counter-day");
 			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
 			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
-			counterDay.innerText = dayDifference;
+			counterDay.innerText = `${dayDifference} /`;
 
 
 			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");

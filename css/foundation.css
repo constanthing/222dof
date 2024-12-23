@@ -163,8 +163,15 @@ a.clickable:hover {
 	border-bottom: .1em solid var(--dark-gray);
 }
 
+#main-navigation h1 {
+	position: relative;
+}
 #main-navigation h1 a {
 	color: var(--white);
+}
+#counter-day {
+	font-size: .6em;
+	color: var(--medium-gray);
 }
 
 #main-navigation-links {
