@@ -1,6 +1,10 @@
 #content {
     padding-top: 0;
 }
+.output {
+    display: flex;
+    gap: 2em;
+}
 .output h1 {
     margin-bottom: 0;
 }
@@ -8,7 +12,23 @@
     background: black;
     padding: 2em;
 }
+#post-metadata {
+    position: sticky;
+    top: 2em;
+}
+#posts-tags {
+    margin: 1em 0;
+}
+#posts-navigation {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+#post-body {
+    width: 60%;
+}
 #post-body ul {
     color: var(--light-gray);
 }
@@ -26,8 +46,16 @@
     #content {
         padding: 0;
     }
+    .output {
+        flex-direction: column;
+        gap: 0;
+    }
     #post-body {
-        padding: 2em;
+        padding: 0em 2em 2em 2em;
+        width: 100%;
+    }
+    #post-header {
+        width: 100%;
     }
 }
 

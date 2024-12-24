@@ -31,11 +31,6 @@ blockquote {
     color: var(--white);
 }
 
-.output h1 {
-    margin-bottom: 1em;
-    font-size: 2em;
-}
-
 .output p {
     margin: .5em 0;
     line-height: 1.4em;
