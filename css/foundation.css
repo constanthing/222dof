@@ -54,16 +54,16 @@ html,
 body {
 	/* background: #333333; */
 	/* background: var(--blue); */
-	background: rgb(0, 0, 0);
-	background: -moz-linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%);
-	background: -webkit-linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%);
-	background: linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=1);
+	/* background: -moz-linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%); */
+	/* background: -webkit-linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%); */
+	/* background: linear-gradient(2deg, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 35%, rgba(0, 0, 0, 1) 100%); */
+	/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=1); */
 	color: var(--white);
 	height: fit-content;
 	width: 100%;
 	font-family: "RobotoRegular", sans-serif;
 	scroll-behavior: smooth;
+	background: black;
 }
 
 /* button.tag to reduce collision

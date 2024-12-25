@@ -1,12 +1,6 @@
-h2 {
-    width: 100%;
+html, body {
     background: black;
-    padding: .5em 1em;
-    margin-bottom: .5em;
-    border: .1em solid var(--dark-gray);
-    font-family: "RobotoRegular", sans-serif !important;
 }
-
 .projects-container {
     display: flex;
 
