@@ -36,19 +36,19 @@ for (const heading of headings) {
 
 	const headingElement = createLi(heading);
 
-	if (previous == null) {
-		previous = heading;
-		postNavigation.appendChild(headingElement)
-		previousElement = headingElement;
-		continue;
+	const headingNumber = getNumber(heading);
+	let previousNumber = null;
+	if (previous) {
+		previousNumber = getNumber(previous);
 	}
 
-	const headingNumber = getNumber(heading);
-	const previousNumber = getNumber(previous);
-
-	if (headingNumber > previousNumber) {
+	if (heading.tagName == "H2") {
+		postNavigation.appendChild(headingElement)
+	} else if (headingNumber > previousNumber) {
+		// child of it
 		previousElement.appendChild(createUl(headingElement))
 	} else if (headingNumber < previousNumber) {
+		// not child of previous heading
 		let parent = previousElement.parentElement;
 		const diff = previousNumber - headingNumber;
 		for (let i = 0; i < diff; i++) {
@@ -58,6 +58,7 @@ for (const heading of headings) {
 	} else if (headingNumber == previousNumber) {
 		previousElement.after(headingElement)
 	}
+
 	previous = heading;
 	previousElement = headingElement;
 }

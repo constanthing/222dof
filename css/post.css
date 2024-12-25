@@ -1,5 +1,5 @@
 #content {
-    padding-top: 0;
+    padding: 0;
 }
 .output {
     display: flex;
@@ -17,9 +17,37 @@
     position: sticky;
     top: 2em;
 }
+#post-metadata ul {
+    padding-left: 0;
+}
+#post-navigation {
+    padding-left: 0;
+}
+#post-navigation li {
+    list-style-type: none;
+}
+#post-navigation li > ul {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+#post-navigation a + ul {
+    margin-top: .3em;
+}
+#post-navigation > li > a {
+    color: var(--light-gray);
+    font-family: "RobotoBold", sans-serif;
+}
 #posts-tags {
     margin: 1em 0;
 }
+#post-navigation {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
 #posts-navigation {
     margin-top: 2em;
     display: flex;
@@ -29,6 +57,7 @@
 
 #post-body {
     width: 60%;
+    padding-bottom: 2em;
 }
 #post-body ul {
     color: var(--light-gray);
