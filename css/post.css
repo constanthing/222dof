@@ -10,7 +10,7 @@
 }
 #post-header {
     background: black;
-    padding: 2em;
+    padding: 2em 2em 2em 0;
     border-right: .1em solid var(--dark-gray);
 }
 #post-metadata {
@@ -72,6 +72,15 @@
     top: 0;
 }
 
+
+@media screen and (max-width: 1100px) {
+    #post-body {
+        padding: 0 2em 2em 0;
+    }
+    #post-header {
+        padding: 2em;
+    }
+}
 
 @media screen and (max-width: 650px) {
     #content {

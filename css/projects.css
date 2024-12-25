@@ -71,6 +71,9 @@ html, body {
     .projects-container {
         flex-direction: column;
     }
+    .col {
+        width: 100%;
+    }
     .project {
         width: 100%;
     }

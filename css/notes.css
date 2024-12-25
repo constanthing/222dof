@@ -1,0 +1,163 @@
+ul {
+    margin: 0;
+}
+
+#notes-navigation li {
+    margin: 0 !important;
+    list-style-type: none;
+    display: block;
+    margin-bottom: .5em !important;
+}
+
+a {
+    color: var(--medium-gray);
+}
+
+#content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+#content>* {
+    padding: 2em;
+}
+
+#notes-navigation {
+    width: 30%;
+    /* height: 100%; */
+    background: black;
+    border-right: .1em solid var(--dark-gray);
+    padding-left: 0;
+}
+
+#notes-navigation-links-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#notes-navigation-links a {
+    display: flex;
+    justify-content: space-between;
+}
+
+#notes-navigation-links a:hover img {
+    transform: rotate(90deg);
+}
+
+#notes-navigation-links label {
+    display: block;
+}
+
+/* parent "links" */
+#notes-navigation-links>li {
+    user-select: none;
+    -moz-user-select: none;
+    /* mozilla */
+    -webkit-user-select: none;
+    /* safari */
+
+    color: var(--medium-gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arrow {
+    filter: invert(.5)
+}
+
+.notes-selected .arrow {
+    filter: unset;
+}
+
+#notes-navigation-links>li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.notes-selected {
+    color: var(--white) !important;
+}
+
+.notes-selected img {
+    transform: rotate(90deg);
+}
+
+.sublinks {
+    margin: .5em 0 1em 1em;
+    display: none;
+}
+
+.sublinks-selected {
+    display: block;
+}
+
+.sublinks a {
+    color: var(--medium-gray);
+}
+
+.active-notes-selected {
+    text-decoration: underline;
+}
+
+
+/* OUTPUT */
+
+#notes-output {
+    width: 70%;
+    /* height: 100%; */
+}
+
+#notes-output-heading {
+    /* margin-bottom: 1em; */
+}
+
+#notes-output h2,
+h3,
+h4,
+h5,
+h6 {
+    /* font-family: "RobotoRegular", sans-serif !important; */
+}
+
+.output-subheading {
+    /* margin: 2em 0 .3em 0; */
+    /* color: var(--medium-gray); */
+}
+
+.output {
+    display: none;
+}
+
+
+.output-selected {
+    display: block;
+}
+
+@media screen and (max-width: 1100px) {
+    #content {
+        flex-direction: column;
+    }
+
+
+    #notes-navigation {
+        width: 100%;
+        border: none;
+        border-bottom: .1em solid var(--dark-gray);
+        padding-left: 2em;
+    }
+
+    #notes-output {
+        width: 100%;
+    }
+
+    blockquote {
+        /* margin: .5em 0 1em 0; */
+    }
+
+}
