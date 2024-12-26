@@ -39,6 +39,13 @@
         background: var(--dark-gray);
         border: 1px solid rgb(132, 132, 132);
         margin: .1em;
+        border-radius: .1em;
+    }
+    .day .post {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgb(18, 18, 136);
     }
     .empty-day {
         background: none;
@@ -51,6 +58,9 @@
         display: block;
     }
 
+    .passed {
+        background: green;
+    }
 </style>
 
 	</head>
@@ -105,6 +115,7 @@
     // const end = new Date(2025, 7, 1);
 
     let day = start.getDate();
+    // currentDate in the iteration through August 1st
     let currentDate = start;
 
     let index = 0;
@@ -113,6 +124,10 @@
 
     let currentMonth = null;
     let currentWeek = null;
+
+    // todays date 
+    const today = new Date();
+
     function createMonth() {
         /*
         access currentDate to get month string 
@@ -148,6 +163,7 @@
         currentWeek.classList.add("week")
     }
 
+
     while (true) {
         // want to append day to dayContainer at least one time therefore day == 2 instead of 1
         // if (currentDate.getMonth() == 7 && day == 2) {
@@ -163,6 +179,11 @@
         //     }
         // }
         dayContainer.classList.add("day")
+        dayContainer.setAttribute("data-creation", `${currentDate.getMonth()+1}-${currentDate.getDate()}-${currentDate.getFullYear()}`)
+        if (currentDate < today) {
+            console.log(currentDate)
+            dayContainer.classList.add("passed")
+        }
         currentWeek.appendChild(dayContainer)
 
         if (day % 7 == 0) {
@@ -179,8 +200,11 @@
 
             // new month
             day = temp.getDate();
-            currentDate = new Date(temp.getFullYear(), temp.getMonth(), day);
+            currentDate = temp;
+            currentDate.setDate(day)
             createMonth()
+        } else {
+            currentDate = temp;
         }
         // console.log("new month", `day: ${day} --- new day: ${temp.getDate()} --- new month: ${temp.getMonth()} --- old month${month.getMonth()}`)
 
@@ -191,6 +215,21 @@
         index += 1;
     }
 
+
+    // const posts = JSON.parse("12-22-2024");
+    const posts = "12-22-2024".split(",");
+    for (const post of posts) {
+        const day = document.querySelector(`[data-creation="${post}"]`);
+        const a = document.createElement("a");
+        a.href = `/222dof/posts/${post}/`;
+        a.classList.add("post")
+        a.setAttribute("title", post)
+        day.appendChild(a)
+    }
+
+
+    // Syling reasons August requires there to be 7 days instead of 1 day
+    // So adding style to "hide" days after August, 1st.
     let childIndex = 0;
     for (const child of currentMonth.querySelector(".week").children) {
         if (childIndex >= 1) {
@@ -198,7 +237,6 @@
         }
         childIndex+=1;
     }
-    delete childIndex;
 
 </script>
 

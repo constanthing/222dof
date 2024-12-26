@@ -17,10 +17,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2em;
 	position: sticky; 
 	top: 0;
 	background: black;
+	padding: 1em 0;
+	z-index: 100;
 }
 .month-header-metadata {
 	/* replace for html elements <br/> or display: block */
@@ -123,5 +124,11 @@
 @media screen and (max-width: 750px) {
 	.post {
 		width: 100%;
+	}
+	.month {
+		width: 100%;
+	}
+	.month {
+		padding: 0;
 	}
 }

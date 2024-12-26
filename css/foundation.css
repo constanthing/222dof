@@ -330,15 +330,7 @@ a.clickable:hover {
 	#main-navigation-links li {
 		padding-right: 0;
 	}
-	.month {
-		width: 100%;
-	}
-	#main-navigation {
-		/* font-size: .8em; */
-	}
-	.month {
-		padding: 2em 1em !important;
-	}
+
 	.post {
 		margin-right: 0 !important;
 		margin-left: 0 !important;
