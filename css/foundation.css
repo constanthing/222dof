@@ -32,12 +32,7 @@
 	box-sizing: border-box;
 }
 
-.safari h1,
-.safari h2,
-.safari h3,
-.safari h4,
-.safari h5,
-.safari h6 {
+.safari :has(h1, h2, h3, h4, h5, h6) {
 	font-weight: 550;
 }
 
@@ -85,12 +80,7 @@ button.tag {
 	background: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:has(h1, h2, h3, h4, h5, h6) {
 	font-family: "RobotoCondensed", Arial !important;
 	/* if on safari change to 500 */
 	/* font-weight: 500; */
