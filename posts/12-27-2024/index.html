@@ -37,13 +37,10 @@
 <div id="post-header">
 	<div id="post-metadata">
 
-
-
-
 		<div id="posts-navigation">
-			<img src="/222dof/vectors/right-arrow.svg" style="transform: rotate(180deg)">
+			<a class="disabled"><img src="/222dof/vectors/right-arrow.svg" id="previous-post" style="transform: rotate(180deg)"></a>
 			<small>12-27-2024</small>
-			<img src="/222dof/vectors/right-arrow.svg">
+			<a class="disabled"><img src="/222dof/vectors/right-arrow.svg" id="next-post"></a>
 		</div>
 		<h1> Skeleton of a website</h1>
 
@@ -161,6 +158,31 @@
 	
 	
 <script src="/222dof/js/post.js"></script>
+<script>
+const creation = "12-27-2024";
+const posts = "12-22-2024".split(",");
+let previousPost = undefined ;
+let nextPost = undefined;
+for (let i = 0; i < posts.length; i++) {
+	const post = posts[i];
+
+	if (post == creation) {
+		nextPost = posts[i+1];
+		break;
+	}
+	previousPost = post;
+}
+
+const [previousButton, nextButton] = document.querySelectorAll("#posts-navigation a");
+if (previousPost) {
+	previousButton.classList.remove("disabled")
+	previousButton.href = `/222dof/posts/${previousPost}/`;
+}
+if (nextPost) {
+	nextButton.classList.remove("disabled")
+	nextButton.href = `/222dof/posts/${nextPost}/`;
+}
+</script>
 
 	<script>
 			const counterDay = document.querySelector("#counter-day");

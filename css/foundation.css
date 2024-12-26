@@ -49,6 +49,13 @@
 	font-weight: 550;
 }
 
+.disabled {
+	opacity: .5;
+	text-decoration: line-through;
+	user-select: none;
+	pointer-events: none;
+}
+
 
 html,
 body {

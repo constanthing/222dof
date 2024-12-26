@@ -61,6 +61,11 @@
     .passed {
         background: green;
     }
+    @media screen and (max-width: 550px) {
+        #heatmap {
+            flex-direction: column;
+        }
+    }
 </style>
 
 	</head>
@@ -126,7 +131,8 @@
     let currentWeek = null;
 
     // todays date 
-    const today = new Date();
+    let tempD = new Date();
+    let today = new Date(tempD.getFullYear(), tempD.getMonth(), tempD.getDate());
 
     function createMonth() {
         /*

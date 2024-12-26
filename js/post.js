@@ -62,3 +62,4 @@ for (const heading of headings) {
 	previous = heading;
 	previousElement = headingElement;
 }
+

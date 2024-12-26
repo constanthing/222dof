@@ -108,12 +108,7 @@
 }
 
 
-.disabled {
-	opacity: .5;
-	text-decoration: line-through;
-	user-select: none;
-	pointer-events: none;
-}
+
 
 @media screen and (max-width: 1100px) {
 	#content {
