@@ -19,6 +19,21 @@ function createLi(element) {
 
     headingIndex += 1;
 
+	// making headings clickable
+	const hashtag = document.createElement("span");
+	hashtag.classList.add("hashtag")
+	hashtag.classList.add("clickable")
+	hashtag.innerText = "#";
+	hashtag.addEventListener("click", async ()=>{
+		try {
+			await navigator.clipboard.writeText(a.id);
+			sayMessage("Copied")
+		} catch (error) {
+			console.log(error)
+		}
+	})
+	element.appendChild(hashtag)
+
 	return li;
 }
 function createUl(element) {
@@ -32,6 +47,14 @@ let previous = null;
 let headingIndex = 0;
 
 for (const heading of headings) {
+
+
+
+
+
+
+
+	// creating post navigation list 
     heading.setAttribute("id", `h${headingIndex}`)
 
 	const headingElement = createLi(heading);

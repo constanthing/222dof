@@ -102,14 +102,6 @@
 
 
 
-
-.unselected-main-navigation-link {
-	color: unset;
-}
-
-
-
-
 @media screen and (max-width: 1100px) {
 	#content {
 		padding: 2em;

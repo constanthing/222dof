@@ -43,10 +43,9 @@ blockquote {
     margin: 0 0 .3em 0;
     color: var(--white);
 }
-.output :is(h2, h3, h4, h5, h6)::after {
-    content: "#";
+.hashtag {
     padding-left: .5em;
-    color: var(--medium-gray);
+    cursor: copy;
 }
 
 

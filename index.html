@@ -21,11 +21,11 @@
 				<div id="main-navigation-menu">
 					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
 					<ul id="main-navigation-links">
-						<li><a href="notes.html">thoughts</a></li>
-						<li><a href="/222dof/progress/">progress</a></li>
-						<!-- <li><a href="/goals/">goals</a></li> -->
-						<li><a href="/222dof/notes/">notes</a></li>
-						<li><a href="/222dof/projects/">projects</a></li>
+						<li><a href="notes.html" class="clickable">thoughts</a></li>
+						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
+						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
+						<li><a href="/222dof/notes/" class="clickable">notes</a></li>
+						<li><a href="/222dof/projects/" class="clickable">projects</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -287,6 +287,8 @@
 
 
 
+
+			<div id="message">Copied</div>
 			</div>
 	
 
@@ -350,6 +352,29 @@
 </script>
 
 	<script>
+			const message = document.querySelector("#message");
+			let showingMessage = false;
+
+			async function sayMessage(msg) {
+				if (!showingMessage) {
+					showingMessage = true;
+					
+					message.innerText = msg;
+					message.classList.add("reveal-message")
+
+					await new Promise((resolve, reject) => {
+						setTimeout(()=>{
+							message.style.display = "";
+							message.classList.remove("reveal-message")
+							resolve()
+						}, 1000)
+					})
+					showingMessage = false;
+				}
+				
+			}
+
+
 			const counterDay = document.querySelector("#counter-day");
 			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
 			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
@@ -360,8 +385,6 @@
 			for (const link of mainNavigationLinks) {
 				if (window.location.pathname.indexOf(link.innerText) != -1) {
 					link.classList.add("selected-link")
-				} else {
-					link.classList.add("unselected-main-navigation-link")
 				}
 			}
 
