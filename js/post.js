@@ -25,8 +25,9 @@ function createLi(element) {
 	hashtag.classList.add("clickable")
 	hashtag.innerText = "#";
 	hashtag.addEventListener("click", async ()=>{
+		console.log(a)
 		try {
-			await navigator.clipboard.writeText(a.id);
+			await navigator.clipboard.writeText(a.href);
 			sayMessage("Copied")
 		} catch (error) {
 			console.log(error)
