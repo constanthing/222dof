@@ -91,9 +91,9 @@
                     Project</a></li>
             <li><a href="https://roadmap.sh/" target="_blank">roadmap.sh</a></li>
         </ul>
-        <li class="notes-selected active-notes-selected" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">
+        <li class="" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">
             JavaScript <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
-        <ul id="javascript-sublinks" class="sublinks sublinks-selected">
+        <ul id="javascript-sublinks" class="sublinks">
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
@@ -117,7 +117,7 @@
     </ul>
 </div>
 <div id="notes-output">
-    <h1 id="notes-output-heading">JavaScript</h1>
+    <h1 id="notes-output-heading">[PENDING]</h1>
 
     <div id="design-output" class="output">
         <p>EMPTY</p>
@@ -186,7 +186,7 @@
     <div id="eleventy-output" class="output">
         <p>EMPTY</p>
     </div>
-    <div id="javascript-output" class="output-selected output">
+    <div id="javascript-output" class="output">
         <h3 class="output-subheading">Using <code class="code">insertBefore(undefined, ...)</code></h3>
         <p>
             The method insertBefore() expects <strong>two</strong> arguments: the node to insert and the reference node. If you pass
@@ -210,6 +210,12 @@
 <span class="token punctuation">}</span></code></pre> 
         <h3><code class="code">animationiteration</code> event</h3>
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event" target="_blank">mdn</a>
+        <h3>Simple copying to clipboard</h3>
+        <pre class="language-js"><code class="language-js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>clipboard<span class="token punctuation">.</span><span class="token function">writeText</span><span class="token punctuation">(</span><span class="token string">"text to be copied"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
     </div>
 </div>
 
@@ -232,6 +238,28 @@
 	
     <script>
 
+
+        // refresh headings on new output click
+        const headings = document.querySelectorAll(":is(h2, h3, h4, h5, h6,)");
+        let headingIndex = 0;
+        for (const heading of headings) {
+            heading.id = `${heading.parentElement.id.split("-output")[0]}-h${headingIndex}`;
+            // making headings clickable
+            const hashtag = document.createElement("span");
+            hashtag.classList.add("hashtag")
+            hashtag.classList.add("clickable")
+            hashtag.innerText = "#";
+            hashtag.addEventListener("click", async ()=>{
+                try {
+                    await navigator.clipboard.writeText(`${window.location.href.split("#")[0]}#${heading.id}`);
+                    sayMessage("Copied")
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            heading.appendChild(hashtag)
+            headingIndex += 1;
+        }
 
         /*
         on clicking sublink 
@@ -344,6 +372,16 @@
                 notesOutputHeading.innerText = e.innerText;
                 e.dataset.initialClick = "0"; // false
             }
+        }
+
+        const click = new MouseEvent("click");
+        try {
+            let visiting = window.location.href.split("#")[1].split("-h")[0];
+            let element = document.querySelector(`[data-type="${visiting}"]`)
+            element.dispatchEvent(click)
+        } catch(error) {
+            console.log("Default output")
+            document.querySelector("[data-type='javascript']").dispatchEvent(click)
         }
     </script>
     

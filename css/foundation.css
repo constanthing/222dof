@@ -48,7 +48,8 @@
 	opacity: .5;
 	text-decoration: line-through;
 	user-select: none;
-	pointer-events: none;
+	/* pointer-events: none; */
+	cursor: not-allowed;
 }
 
 #message {
@@ -60,14 +61,17 @@
 	border: .1em solid var(--dark-gray);
 	border-radius: .5em;
 	color: var(--dark-gray);
-	padding: .3em 1.5em;
+	/* in notes.html #content>* has higher precedence...messes up padding */
+	padding: .3em 1.5em !important;
 	box-shadow: 0px 5px 5px rgb(31, 31, 31);
 
-	transition: bottom .3s ease;
+	transition: bottom .3s ease, opacity .1s ease-out;
 
+	opacity: 0;
 	bottom: -2em;
 }
 #message.reveal-message {
+	opacity: 1;
 	bottom: 1em;
 }
 

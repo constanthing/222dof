@@ -48,13 +48,6 @@ let previous = null;
 let headingIndex = 0;
 
 for (const heading of headings) {
-
-
-
-
-
-
-
 	// creating post navigation list 
     heading.setAttribute("id", `h${headingIndex}`)
 
