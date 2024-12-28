@@ -33,15 +33,7 @@ a {
 }
 
 #notes-navigation-links-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 1em;
-}
-
-#notes-navigation-links a {
-    display: flex;
-    justify-content: space-between;
 }
 
 #notes-navigation-links a:hover img {
@@ -61,6 +53,7 @@ a {
     /* safari */
 
     color: var(--medium-gray);
+    /* too many lis to assign flex to by hand */
     display: flex;
     align-items: center;
     justify-content: space-between;

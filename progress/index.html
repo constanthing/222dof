@@ -12,16 +12,10 @@
     }
     #heatmap {
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
     }
     .month {
         /* width: 45%; */
         height: fit-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin-bottom: 1em;
     }
     .month h3 {
@@ -30,8 +24,6 @@
 
     .days-container {
         width: fit-content;
-        /* display: flex; */
-        /* flex-wrap: wrap; */
     }
     .day {
         height: 2em;
@@ -71,16 +63,16 @@
 	</head>
 	<body>
 		<div id="container">
-			<nav id="main-navigation">
+			<nav id="main-navigation" class="flex ai-c jc-sb">
 				<div id="header-logo">
 					<h1><small id="counter-day"></small>
 					<a href="/222dof/">222 days of code</a></h1>
 					<small>coding everyday until August 1st</small>
 				</div>
 				
-				<div id="main-navigation-menu">
+				<div id="main-navigation-menu" class="flex fd-c ai-e">
 					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
-					<ul id="main-navigation-links">
+					<ul id="main-navigation-links" class="flex">
 						<li><a href="notes.html" class="clickable">thoughts</a></li>
 						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
 						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
@@ -93,7 +85,7 @@
 			<div id="content">
 			
 
-<div id="heatmap">
+<div id="heatmap" class="flex fw-w jc-sb">
 
 </div>
 
@@ -103,7 +95,7 @@
 			</div>
 	
 
-			<footer id="main-footer">
+			<footer id="main-footer" class="flex ai-c jc-sb">
 				<div id="main-footer-about">
 					<p>A journey to becoming a web developer. I hope this can serve as a resource
 					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
@@ -142,7 +134,7 @@
         access currentDate to get month string 
         */
         const month = document.createElement("div");
-        month.classList.add("month")
+        month.classList.add("month", "flex", "fd-c", "ai-c")
 
         const monthLabel = document.createElement("h3");
         // monthLabel.classList.add("month-label")

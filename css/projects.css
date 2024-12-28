@@ -2,29 +2,19 @@ html, body {
     background: black;
 }
 .projects-container {
-    display: flex;
-
-    justify-content: space-between;
-    flex-wrap: wrap;
     margin-bottom: 2em;
-    align-content: stretch;
     gap: 1em;
 }
 
 .col {
-    display: flex;
-    flex-direction: column;
     width: 32%;
     gap: 1em;
 }
 
 .project {
-
     box-shadow: 0 4px 6px rgb(255 255 255 / 4%);
-    display: flex;
     height: fit-content;
     width: 100%;
-    flex-direction: column;
     /* border: .1em solid var(--medium-gray); */
     border: .1em solid rgb(65 65 65);
     border-radius: .2em;
@@ -52,8 +42,6 @@ html, body {
     /* box-shadow: inset 0px 5px 1em #303030; */
 }
 .project-site {
-    display: flex;
-    justify-content: start;
     gap: 1em;
     margin-bottom: .5em;
 }

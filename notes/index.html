@@ -13,16 +13,16 @@
 	</head>
 	<body>
 		<div id="container">
-			<nav id="main-navigation">
+			<nav id="main-navigation" class="flex ai-c jc-sb">
 				<div id="header-logo">
 					<h1><small id="counter-day"></small>
 					<a href="/222dof/">222 days of code</a></h1>
 					<small>coding everyday until August 1st</small>
 				</div>
 				
-				<div id="main-navigation-menu">
+				<div id="main-navigation-menu" class="flex fd-c ai-e">
 					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
-					<ul id="main-navigation-links">
+					<ul id="main-navigation-links" class="flex">
 						<li><a href="notes.html" class="clickable">thoughts</a></li>
 						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
 						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
@@ -38,7 +38,7 @@
 <div id="notes-navigation">
     <ul id="notes-navigation-links">
 
-        <div id="notes-navigation-links-header">
+        <div id="notes-navigation-links-header" class="flex jc-sb ai-c">
             <label for="" style="font-size: 1.2em;">Links</label>
             <div class="flex align-items-center">
                 <img src="/222dof/vectors/hide.svg" alt="Eye icon">
@@ -50,7 +50,7 @@
             Design <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
 
-        <ul id="design-sublinks" class="sublinks ">
+        <ul id="design-sublinks" class="sublinks">
             <li><a href="https://www.refactoringui.com/" target="_blank">Tailwind Design Book</a></li>
             <li><a href="https://www.refactoringui.com/previews/building-your-color-palette" target="_blank">Building
                     your color palette</a></li>
@@ -225,7 +225,7 @@
 			</div>
 	
 
-			<footer id="main-footer">
+			<footer id="main-footer" class="flex ai-c jc-sb">
 				<div id="main-footer-about">
 					<p>A journey to becoming a web developer. I hope this can serve as a resource
 					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
@@ -237,6 +237,8 @@
 	
 	
     <script>
+
+
 
 
         // refresh headings on new output click
@@ -258,6 +260,7 @@
                 }
             })
             heading.appendChild(hashtag)
+
             headingIndex += 1;
         }
 
@@ -319,33 +322,41 @@
             }
         }
 
+        let hashLoaded = false;
 
         function parentLinkClicked(e) {
-            // if not the selected note 
-
             const output = document.querySelector(`#${e.dataset.type}-output`);
 
             if (e.classList.contains("active-notes-selected")) {
                 // if current note is the active one
 
-                // hide contents
-                e.classList.remove("notes-selected")
-                const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
-                sublinks.classList.remove("sublinks-selected")
+                /*
+                 when user loads site using hash from heading of currently 
+                 opened output it hides the output
+                 so if this parent link was clicked while hash was true 
+                 then user loaded site using hash and selected heading
+                 in this parent links output -> do not hide it!
+                */
+                if (!hashLoaded) {
+                    // hide contents
+                    e.classList.remove("notes-selected")
+                    const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
+                    sublinks.classList.remove("sublinks-selected")
 
-                // hide output
-                output.classList.remove("output-selected")
-                activeOutputSelected = null;
+                    // hide output
+                    output.classList.remove("output-selected")
+                    activeOutputSelected = null;
 
-                // notes heading to pending
-                notesOutputHeading.innerText = "[PENDING]";
+                    // notes heading to pending
+                    notesOutputHeading.innerText = "[PENDING]";
 
-                // strip it from active note selected status! 
-                e.classList.add("active-notes-selected")
-                activeNotesSelected.classList.remove("active-notes-selected")
+                    // strip it from active note selected status! 
+                    e.classList.add("active-notes-selected")
+                    activeNotesSelected.classList.remove("active-notes-selected")
 
-                // what happens when you remove active note status from the active note status??!  
-                activeNotesSelected = null;
+                    // what happens when you remove active note status from the active note status??!  
+                    activeNotesSelected = null;
+                }
             } else {
                 if (activeNotesSelected) {
                     // remove active note selected status from old active note! 
@@ -374,15 +385,33 @@
             }
         }
 
-        const click = new MouseEvent("click");
-        try {
-            let visiting = window.location.href.split("#")[1].split("-h")[0];
-            let element = document.querySelector(`[data-type="${visiting}"]`)
-            element.dispatchEvent(click)
-        } catch(error) {
-            console.log("Default output")
-            document.querySelector("[data-type='javascript']").dispatchEvent(click)
+        const body = document.querySelector("body");
+        function hashOutput() {
+            const click = new MouseEvent("click");
+            try {
+                hashLoaded = true;
+                let visiting = window.location.hash.slice(1).split("-h")[0];
+                let element = document.querySelector(`[data-type="${visiting}"]`)
+                element.dispatchEvent(click)
+                let heading = document.querySelector(window.location.hash)
+                heading.scrollIntoView()
+                window.history.replaceState(null, '', window.location.pathname)
+                hashLoaded = false;
+            } catch(error) {
+                console.log(error)
+                console.log("Default output")
+                document.querySelector("[data-type='web-development']").dispatchEvent(click)
+            }
         }
+
+        // open default output
+        hashOutput()
+
+        window.addEventListener("hashchange", (e)=>{
+            hashOutput()
+            e.preventDefault()
+        })
+
     </script>
     
 	<script>

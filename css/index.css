@@ -14,31 +14,14 @@
 }
 
 .month-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	position: sticky; 
 	top: 0;
 	background: black;
 	padding: 1em 0;
 	z-index: 100;
 }
-.month-header-metadata {
-	/* replace for html elements <br/> or display: block */
-	display: flex;
-	flex-direction: column;
-	align-items: end;
-}
-.month-header-metadata-sort {
-	display: flex;
-	align-items: center;
-}
-
 .month-posts {
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
 	gap: 1em;
 }
 
@@ -57,10 +40,6 @@
 	box-shadow: inset 0px 5px 1.5em #020202;
 	border: .1em solid var(--dark-gray);
 	border-radius: .2em;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 
 	position: relative;
 }
