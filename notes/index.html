@@ -23,7 +23,6 @@
 				<div id="main-navigation-menu" class="flex fd-c ai-e">
 					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
 					<ul id="main-navigation-links" class="flex">
-						<li><a href="notes.html" class="clickable">thoughts</a></li>
 						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
 						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
 						<li><a href="/222dof/notes/" class="clickable">notes</a></li>
@@ -385,17 +384,15 @@
             }
         }
 
-        const body = document.querySelector("body");
         function hashOutput() {
             const click = new MouseEvent("click");
             try {
                 hashLoaded = true;
                 let visiting = window.location.hash.slice(1).split("-h")[0];
-                let element = document.querySelector(`[data-type="${visiting}"]`)
-                element.dispatchEvent(click)
-                let heading = document.querySelector(window.location.hash)
-                heading.scrollIntoView()
-                window.history.replaceState(null, '', window.location.pathname)
+                document.querySelector(`[data-type="${visiting}"]`).dispatchEvent(click)
+                document.querySelector(window.location.hash).scrollIntoView()
+                // removes hash from url
+                // window.history.replaceState(null, '', window.location.pathname)
                 hashLoaded = false;
             } catch(error) {
                 console.log(error)
@@ -434,7 +431,6 @@
 					})
 					showingMessage = false;
 				}
-				
 			}
 
 
