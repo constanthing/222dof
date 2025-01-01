@@ -1,16 +1,20 @@
 @font-face {
 	font-family: "RobotoCondensed";
 	src: url("../fonts/RobotoCondensed.ttf") format("truetype");
+	/* use system font if custom font not ready */
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "RobotoRegular";
 	src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "RobotoBold";
 	src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+	font-display: swap;
 }
 
 
