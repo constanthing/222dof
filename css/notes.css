@@ -8,7 +8,7 @@ ul {
     left: 0;
     padding-top: 2em;
     /* header is 10vh so 90vh would be max screen */
-    max-height: 90vh;
+    max-height: calc(100vh - var(--header-height));
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;

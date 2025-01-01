@@ -28,6 +28,8 @@
 
 	--medium-gray: rgb(132, 132, 132);
 	--dark-gray: rgb(62, 62, 62);
+
+	--header-height: 10vh;
 }
 
 * {
@@ -110,7 +112,8 @@ body {
 	color: var(--white);
 	height: fit-content;
 	width: 100%;
-	font-family: "RobotoRegular", sans-serif;
+	/* font-family: "RobotoRegular", sans-serif; */
+	font-family: "RobotoCondensed", Arial !important;
 	scroll-behavior: smooth;
 	background: black;
 }
@@ -125,12 +128,6 @@ button.tag {
 	border-radius: .2em;
 	color: var(--white);
 	background: none;
-}
-
-:has(h1, h2, h3, h4, h5, h6) {
-	font-family: "RobotoCondensed", Arial !important;
-	/* if on safari change to 500 */
-	/* font-weight: 500; */
 }
 
 p {
@@ -192,7 +189,7 @@ a.clickable:hover {
 }
 
 #main-navigation {
-	height: 10vh;
+	height: var(--header-height);
 	width: 100%;
 	border-bottom: .1em solid var(--dark-gray);
 }
@@ -252,6 +249,22 @@ a.clickable:hover {
 
 .unselected-main-navigation-link {
 	color: var(--light-gray);
+}
+
+@media screen and (max-height: 700px) {
+	:root {
+		--header-height: 15vh;
+	}
+}
+@media screen and (max-height: 500px) {
+	:root {
+		--header-height: 20vh;
+	}
+}
+@media screen and (max-height: 400px) {
+	:root {
+		--header-height: 25vh;
+	}
 }
 
 @media screen and (max-width: 1700px) {

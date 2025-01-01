@@ -16,9 +16,10 @@
 #post-metadata {
     position: sticky;
     /* for smaller screens make overflow-y scroll */
-    max-height: 90vh;
+    max-height: calc(100vh - var(--header-height));
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: none; 
     top: 2em;
 }
 #post-metadata ul {
