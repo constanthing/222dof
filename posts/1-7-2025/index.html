@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Animating using CSS/JS | 222dof </title>
+		<link href="/222dof/css/foundation.css" rel="stylesheet">
+		
+<link href="/222dof/css/formatting.css" rel="stylesheet">
+<link href="/222dof/css/post.css" rel="stylesheet">
+<link rel="stylesheet" href="/222dof/css/prism-atom-dark.css">
+
+	</head>
+	<body>
+		<div id="container">
+			<nav id="main-navigation" class="flex ai-c jc-sb">
+				<div id="header-logo">
+					<h1><small id="counter-day"></small>
+					<a href="/222dof/">222 days of code</a></h1>
+					<small>coding everyday until August 1st</small>
+				</div>
+				
+				<div id="main-navigation-menu" class="flex fd-c ai-e">
+					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
+					<ul id="main-navigation-links" class="flex">
+						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
+						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
+						<li><a href="/222dof/notes/" class="clickable">notes</a></li>
+						<li><a href="/222dof/projects/" class="clickable">projects</a></li>
+					</ul>
+				</div>
+			</nav>
+			
+			<div id="content">
+			
+<article class="output">
+<div id="post-header">
+	<div id="post-metadata">
+
+		<div id="posts-navigation" class="flex jc-sb ai-c">
+			<a class="disabled"><img src="/222dof/vectors/right-arrow.svg" id="previous-post" style="transform: rotate(180deg)"></a>
+			<small>01-07-2025</small>
+			<a class="disabled"><img src="/222dof/vectors/right-arrow.svg" id="next-post"></a>
+		</div>
+		<h1> Animating using CSS/JS</h1>
+
+		<div id="posts-tags">
+			
+			
+			
+			
+			<button class="tag">draft</button>
+			
+			
+			
+			<button class="tag">css</button>
+			
+			
+			
+			<button class="tag">animation</button>
+			
+			
+			
+			<button class="tag">javascript</button>
+			
+			
+		</div>
+		<ul id="post-navigation" class="flex ai-s fd-c">
+		</ul>
+		</div>
+</div>
+
+<div id="post-body">
+
+
+</div>
+
+</article>
+
+
+			<div id="message">Copied</div>
+			</div>
+	
+
+			<footer id="main-footer" class="flex ai-c jc-sb">
+				<div id="main-footer-about">
+					<p>A journey to becoming a web developer. I hope this can serve as a resource
+					for aspiring web developers with useful posts, notes, and links to guide them on their journey.</p>
+				</div>
+				
+				<a href="https://github.com/constanthing" target="_blank"><img src="/222dof/vectors/github.svg" alt="github icon"></a>
+			</footer>
+		</div>
+	
+	
+<script src="/222dof/js/post.js"></script>
+<script>
+const creation = "01-07-2025";
+const posts = "12-22-2024".split(",");
+let previousPost = undefined ;
+let nextPost = undefined;
+for (let i = 0; i < posts.length; i++) {
+	const post = posts[i];
+
+	if (post == creation) {
+		nextPost = posts[i+1];
+		break;
+	}
+	previousPost = post;
+}
+
+const [previousButton, nextButton] = document.querySelectorAll("#posts-navigation a");
+if (previousPost) {
+	previousButton.classList.remove("disabled")
+	previousButton.href = `/222dof/posts/${previousPost}/`;
+}
+if (nextPost) {
+	nextButton.classList.remove("disabled")
+	nextButton.href = `/222dof/posts/${nextPost}/`;
+}
+</script>
+
+	<script>
+			const message = document.querySelector("#message");
+			let showingMessage = false;
+
+			async function sayMessage(msg) {
+				if (!showingMessage) {
+					showingMessage = true;
+					
+					message.innerText = msg;
+					message.classList.add("reveal-message")
+
+					await new Promise((resolve, reject) => {
+						setTimeout(()=>{
+							message.style.display = "";
+							message.classList.remove("reveal-message")
+							resolve()
+						}, 1000)
+					})
+					showingMessage = false;
+				}
+			}
+
+
+			const counterDay = document.querySelector("#counter-day");
+			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
+			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
+			counterDay.innerText = `${dayDifference} /`;
+
+
+			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
+			for (const link of mainNavigationLinks) {
+				if (window.location.pathname.indexOf(link.innerText) != -1) {
+					link.classList.add("selected-link")
+				}
+			}
+
+			// header fonts look ugly on safari / ios devices
+			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
+				document.querySelector("html").classList.add("safari");
+			}
+
+			function hamburgerClick(e) {
+				const mode = e.dataset.mode;
+				// 0 = hide
+				// 1 = reveal
+				if (mode == "0") {
+					// reveal
+					e.classList.add("hamburger-selected")
+					e.dataset.mode = "1";
+				} else {
+					// hide
+					e.classList.remove("hamburger-selected")
+					e.dataset.mode = "0";
+				}
+			}
+	</script>
+	</body>
+</html>
