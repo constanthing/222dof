@@ -394,18 +394,22 @@
         function hashOutput() {
             const click = new MouseEvent("click");
             try {
-                hashLoaded = true;
+                // return "" if not found
                 let visiting = window.location.hash.slice(1).split("-h")[0];
-                document.querySelector(`[data-type="${visiting}"]`).dispatchEvent(click)
+                // returns null if not found
+                let hashParentLink = document.querySelector(`[data-type="${visiting}"]`);
+                // parent link found ! dispatch click
+                hashLoaded = true;
+                hashParentLink.dispatchEvent(click)
                 document.querySelector(window.location.hash).scrollIntoView()
                 // removes hash from url
                 // window.history.replaceState(null, '', window.location.pathname)
-                hashLoaded = false;
             } catch(error) {
-                hashLoaded = false;
                 console.log(error)
                 console.log("Default output")
                 document.querySelector("[data-type='web-development']").dispatchEvent(click)
+            } finally {
+                hashLoaded = false;
             }
         }
 
