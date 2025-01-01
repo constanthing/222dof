@@ -169,9 +169,11 @@ h6 {
     #notes-output {
         width: 100%;
     }
+    #notes-navigation > ul {
+        max-height: unset;
+    }
 
     blockquote {
         /* margin: .5em 0 1em 0; */
     }
-
 }
