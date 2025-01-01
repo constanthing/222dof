@@ -333,6 +333,7 @@
             const output = document.querySelector(`#${e.dataset.type}-output`);
 
             if (e.classList.contains("active-notes-selected")) {
+                console.log(hashLoaded)
                 // if current note is the active one
 
                 /*
@@ -401,6 +402,7 @@
                 // window.history.replaceState(null, '', window.location.pathname)
                 hashLoaded = false;
             } catch(error) {
+                hashLoaded = false;
                 console.log(error)
                 console.log("Default output")
                 document.querySelector("[data-type='web-development']").dispatchEvent(click)
