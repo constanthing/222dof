@@ -88,6 +88,9 @@
         flex-direction: column;
         gap: 0;
     }
+    #post-metadata {
+        max-height: unset;
+    }
     #post-body {
         padding: 0em 2em 2em 2em;
         width: 100%;
