@@ -21,7 +21,7 @@
 				</div>
 				
 				<div id="main-navigation-menu" class="flex fd-c ai-e">
-					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
+					<img id="hamburger" src="/222dof/vectors/hamburger.svg" data-mode="0" alt="hamburger icon">
 					<ul id="main-navigation-links" class="flex">
 						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
 						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
@@ -41,11 +41,11 @@
             <label for="" style="font-size: 1.2em;">Links</label>
             <div class="flex align-items-center">
                 <img src="/222dof/vectors/hide.svg" alt="Eye icon">
-                <small onclick="expandMode(this)" data-mode="1" class="clickable" style="padding-left: .5em">All</small>
+                <small id="expandMode" data-mode="1" class="clickable" style="padding-left: .5em">All</small>
             </div>
         </div>
 
-        <li class="" onclick="parentLinkClicked(this)" data-type="design" data-initial-click="1">
+        <li class="" data-type="design" data-initial-click="1">
             Design <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
 
@@ -57,7 +57,7 @@
                     last resort</a></li>
             <li><a href="https://abookapart.com/collections" target="_blank">abookapart.com</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-type="static-site-generators" data-initial-click="1">Static
+        <li class="" data-type="static-site-generators" data-initial-click="1">Static
             Site Generators <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
         <ul id="static-site-generators-sublinks" class="sublinks ">
             <li><a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/?utm_source=jamstackorg&utm_medium=what-are-ssg-pnh&utm_campaign=devex" target="_blank">What is a static site generator?</a></li>
@@ -69,7 +69,7 @@
             <li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
             <li><a href="https://www.11ty.dev/docs/" target="_blank">11ty docs</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-type="github" data-initial-click="1">GitHub
+        <li class="" data-type="github" data-initial-click="1">GitHub
             <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="github-sublinks" class="sublinks ">
@@ -79,7 +79,7 @@
             <li><a href="https://examregistration.github.com/login?ReturnUrl=%2Fcertification%2FGHF" target="_blank">Github Certifications</a></li>
             <li><a href="https://docs.github.com/en" target="_blank">Github docs</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-type="web-development" data-initial-click="1">
+        <li class="" data-type="web-development" data-initial-click="1">
             Web
             Development <img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
@@ -96,19 +96,19 @@
             <li><a href="https://developers.google.com/speed" target="_blank">Google Resource for making the web faster</a></li>
             <li><a href="https://developers.google.com/speed/webp/docs/using" target="_blank">Use Google WebP encoding software on your computer</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-initial-click="1" data-type="javascript">
+        <li class="" data-initial-click="1" data-type="javascript">
             JavaScript <img src="/222dof/vectors/right-arrow.svg" class="arrow"></li>
         <ul id="javascript-sublinks" class="sublinks">
             <li><a href="https://262.ecma-international.org/14.0/index.html?_gl=1*1inm3rm*_ga*MTcwOTIxMjU5OC4xNzMzNzMzMzQx*_ga_TDCK4DWEPP*MTczMzczMzM0MC4xLjEuMTczMzczMzQzNy4wLjAuMA.." target="_blank">JavaScript standard document (ECMAScript)</a></li>
             <li><a href="https://docs.npmjs.com/about-npm/" target="_blank">npm docs</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-type="eleventy" data-initial-click="1">
+        <li class="" data-type="eleventy" data-initial-click="1">
             Eleventy (SSG)<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="eleventy-sublinks" class="sublinks ">
             <li><a href="https://www.11ty.dev/docs/collections-api/" target="_blank">Collections API (add your own collections!)</a></li>
         </ul>
-        <li class="" onclick="parentLinkClicked(this)" data-type="miscellaneous" data-initial-click="1">
+        <li class="" data-type="miscellaneous" data-initial-click="1">
             Miscellaneous<img src="/222dof/vectors/right-arrow.svg" class="arrow">
         </li>
         <ul id="miscellaneous-sublinks" class="sublinks ">
@@ -241,243 +241,8 @@
 		</div>
 	
 	
-    <script>
-
-
-
-
-        // refresh headings on new output click
-        const headings = document.querySelectorAll(":is(h2, h3, h4, h5, h6,)");
-        let headingIndex = 0;
-        for (const heading of headings) {
-            heading.id = `${heading.parentElement.id.split("-output")[0]}-h${headingIndex}`;
-            // making headings clickable
-            const hashtag = document.createElement("span");
-            hashtag.classList.add("hashtag")
-            hashtag.classList.add("clickable")
-            hashtag.innerText = "#";
-            hashtag.addEventListener("click", async ()=>{
-                try {
-                    await navigator.clipboard.writeText(`${window.location.href.split("#")[0]}#${heading.id}`);
-                    sayMessage("Copied")
-                } catch (error) {
-                    console.log(error)
-                }
-            })
-            heading.appendChild(hashtag)
-
-            headingIndex += 1;
-        }
-
-        /*
-        on clicking sublink 
-        show the relative output
-        of parent link
-        */
-
-        const notesOutputHeading = document.querySelector("#notes-output-heading");
-        let activeNotesSelected = document.querySelector(".active-notes-selected");
-        let activeOutputSelected = document.querySelector(".output-selected");
-
-        function expandMode(e) {
-            const img = e.previousElementSibling;
-            const parentLinks = document.querySelectorAll("#notes-navigation-links > li");
-
-            /*
-            IGNORE ACTIVELY SELECTED ONE
-            */
-
-            // 0 = reveal    1 = hide
-            if (e.dataset.mode == "0") {
-                // hide
-                img.src = "/222dof/vectors/hide.svg";
-                e.dataset.mode = "1";
-
-                for (const link of parentLinks) {
-                    if (link != activeNotesSelected) {
-                        // remove selected status
-                        link.classList.remove("notes-selected")
-                        // something with INVERT on img of non selected notes
-                        const sublinks = document.querySelector(`#${link.dataset.type}-sublinks`);
-                        sublinks.classList.remove("sublinks-selected")
-                    }
-                }
-            } else {
-                // reveal 
-                img.src = "/222dof/vectors/reveal.svg";
-                e.dataset.mode = "0";
-                for (const link of parentLinks) {
-                    if (link != activeNotesSelected) {
-                        // remove selected status
-                        link.classList.add("notes-selected")
-                        // something with INVERT on img of non selected notes
-                        const sublinks = document.querySelector(`#${link.dataset.type}-sublinks`);
-                        sublinks.classList.add("sublinks-selected")
-                    }
-                }
-            }
-
-            if (activeNotesSelected) {
-                // activeNotesSelected.classList.remove("active-notes-selected")
-                // activeNotesSelected = null;
-                // activeOutputSelected.classList.remove("output-selected")
-                // activeOutputSelected = null;
-            } else {
-                notesOutputHeading.innerText = "[PENDING]";
-            }
-        }
-
-        let hashLoaded = false;
-
-        function parentLinkClicked(e) {
-            const output = document.querySelector(`#${e.dataset.type}-output`);
-
-            if (e.classList.contains("active-notes-selected")) {
-                console.log(hashLoaded)
-                // if current note is the active one
-
-                /*
-                 when user loads site using hash from heading of currently 
-                 opened output it hides the output
-                 so if this parent link was clicked while hash was true 
-                 then user loaded site using hash and selected heading
-                 in this parent links output -> do not hide it!
-                */
-                if (!hashLoaded) {
-                    // hide contents
-                    e.classList.remove("notes-selected")
-                    const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
-                    sublinks.classList.remove("sublinks-selected")
-
-                    // hide output
-                    output.classList.remove("output-selected")
-                    activeOutputSelected = null;
-
-                    // notes heading to pending
-                    notesOutputHeading.innerText = "[PENDING]";
-
-                    // strip it from active note selected status! 
-                    e.classList.add("active-notes-selected")
-                    activeNotesSelected.classList.remove("active-notes-selected")
-
-                    // what happens when you remove active note status from the active note status??!  
-                    activeNotesSelected = null;
-                }
-            } else {
-                if (activeNotesSelected) {
-                    // remove active note selected status from old active note! 
-                    activeNotesSelected.classList.remove("active-notes-selected")
-                }
-
-                // make active note
-                e.classList.add("active-notes-selected")
-                activeNotesSelected = e;
-
-                // make output visible // hide active one 
-                output.classList.add("output-selected")
-                if (activeOutputSelected) {
-                    activeOutputSelected.classList.remove("output-selected")
-                }
-                activeOutputSelected = output;
-
-                // reveal contents
-                e.classList.add("notes-selected")
-                const sublinks = document.querySelector("#" + e.dataset.type + "-sublinks");
-                sublinks.classList.add("sublinks-selected")
-
-                // not current selected to show the content of the note 
-                notesOutputHeading.innerText = e.innerText;
-                e.dataset.initialClick = "0"; // false
-            }
-        }
-
-        function hashOutput() {
-            const click = new MouseEvent("click");
-            try {
-                // return "" if not found
-                let visiting = window.location.hash.slice(1).split("-h")[0];
-                // returns null if not found
-                let hashParentLink = document.querySelector(`[data-type="${visiting}"]`);
-                // parent link found ! dispatch click
-                hashLoaded = true;
-                hashParentLink.dispatchEvent(click)
-                document.querySelector(window.location.hash).scrollIntoView()
-                // removes hash from url
-                // window.history.replaceState(null, '', window.location.pathname)
-            } catch(error) {
-                console.log(error)
-                console.log("Default output")
-                document.querySelector("[data-type='web-development']").dispatchEvent(click)
-            } finally {
-                hashLoaded = false;
-            }
-        }
-
-        // open default output
-        hashOutput()
-
-        window.addEventListener("hashchange", (e)=>{
-            hashOutput()
-            e.preventDefault()
-        })
-
-    </script>
+    <script src="/222dof/js/notes.js"></script>
     
-	<script>
-			const message = document.querySelector("#message");
-			let showingMessage = false;
-
-			async function sayMessage(msg) {
-				if (!showingMessage) {
-					showingMessage = true;
-					
-					message.innerText = msg;
-					message.classList.add("reveal-message")
-
-					await new Promise((resolve, reject) => {
-						setTimeout(()=>{
-							message.style.display = "";
-							message.classList.remove("reveal-message")
-							resolve()
-						}, 1000)
-					})
-					showingMessage = false;
-				}
-			}
-
-
-			const counterDay = document.querySelector("#counter-day");
-			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
-			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
-			counterDay.innerText = `${dayDifference} /`;
-
-
-			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-			for (const link of mainNavigationLinks) {
-				if (window.location.pathname.indexOf(link.innerText) != -1) {
-					link.classList.add("selected-link")
-				}
-			}
-
-			// header fonts look ugly on safari / ios devices
-			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-				document.querySelector("html").classList.add("safari");
-			}
-
-			function hamburgerClick(e) {
-				const mode = e.dataset.mode;
-				// 0 = hide
-				// 1 = reveal
-				if (mode == "0") {
-					// reveal
-					e.classList.add("hamburger-selected")
-					e.dataset.mode = "1";
-				} else {
-					// hide
-					e.classList.remove("hamburger-selected")
-					e.dataset.mode = "0";
-				}
-			}
-	</script>
+	<script src="/222dof/js/foundation.js"></script>
 	</body>
 </html>

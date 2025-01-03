@@ -21,7 +21,7 @@
 				</div>
 				
 				<div id="main-navigation-menu" class="flex fd-c ai-e">
-					<img id="hamburger" src="/222dof/vectors/hamburger.svg" onclick="hamburgerClick(this)" data-mode="0" alt="hamburger icon">
+					<img id="hamburger" src="/222dof/vectors/hamburger.svg" data-mode="0" alt="hamburger icon">
 					<ul id="main-navigation-links" class="flex">
 						<li><a href="/222dof/progress/" class="clickable">progress</a></li>
 						<!-- <li><a href="/goals/" class="clickable">goals</a></li> -->
@@ -94,6 +94,8 @@
 	
 	
 <script src="/222dof/js/post.js"></script>
+
+<!-- mandatory foundation script -->
 <script>
 const creation = "01-07-2025";
 const posts = "12-22-2024".split(",");
@@ -120,61 +122,6 @@ if (nextPost) {
 }
 </script>
 
-	<script>
-			const message = document.querySelector("#message");
-			let showingMessage = false;
-
-			async function sayMessage(msg) {
-				if (!showingMessage) {
-					showingMessage = true;
-					
-					message.innerText = msg;
-					message.classList.add("reveal-message")
-
-					await new Promise((resolve, reject) => {
-						setTimeout(()=>{
-							message.style.display = "";
-							message.classList.remove("reveal-message")
-							resolve()
-						}, 1000)
-					})
-					showingMessage = false;
-				}
-			}
-
-
-			const counterDay = document.querySelector("#counter-day");
-			// Date() - Date() = milliseconds ... 8640000 = milliseconds in a day
-			const dayDifference = Math.floor((new Date() - new Date(2024, 11, 22)) / 86400000);
-			counterDay.innerText = `${dayDifference} /`;
-
-
-			const mainNavigationLinks = document.querySelectorAll("#main-navigation-links a");
-			for (const link of mainNavigationLinks) {
-				if (window.location.pathname.indexOf(link.innerText) != -1) {
-					link.classList.add("selected-link")
-				}
-			}
-
-			// header fonts look ugly on safari / ios devices
-			if ( navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome") ) {
-				document.querySelector("html").classList.add("safari");
-			}
-
-			function hamburgerClick(e) {
-				const mode = e.dataset.mode;
-				// 0 = hide
-				// 1 = reveal
-				if (mode == "0") {
-					// reveal
-					e.classList.add("hamburger-selected")
-					e.dataset.mode = "1";
-				} else {
-					// hide
-					e.classList.remove("hamburger-selected")
-					e.dataset.mode = "0";
-				}
-			}
-	</script>
+	<script src="/222dof/js/foundation.js"></script>
 	</body>
 </html>
