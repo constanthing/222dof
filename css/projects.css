@@ -57,6 +57,7 @@ html, body {
 
     .projects-container {
         flex-direction: column;
+        gap: 1em;
     }
     .col {
         width: 100%;
